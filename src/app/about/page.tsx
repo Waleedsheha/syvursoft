@@ -19,7 +19,7 @@ import {
 } from "lucide-react";
 
 // Placeholder for missing image
-const FOUNDER_IMAGE = "/Images/waleed.jpg";
+const FOUNDER_IMAGE = "/images/waleed.jpg";
 
 export default function AboutPage() {
     return (
