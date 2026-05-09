@@ -29,7 +29,7 @@ RADex is the radiology engine. It includes RIS, PACS, DICOM viewer, patient port
 
 ### MEND
 
-MEND is a clinical decision and workflow product for critical care and emergency settings. Its page should be inspired by `mend.syvursoft.com`: focused, clinical, direct, and organized around operational pain points and measurable workflow value.
+MEND is a new, adaptive way to manage any medical facility. The facility is built and simulated inside the system to match its real-world structure, so administrators and clinical teams can control operations from every corner of the organization. Its page should present MEND as a full medical-facility operating system, not a single-department workflow tool.
 
 ### ADAM
 
@@ -57,6 +57,7 @@ ADAM is the intelligence layer of the Syvursoft ecosystem. Its page should prese
    - Three product cards or panels: RADex, MEND, ADAM.
    - Each card has a concise role, short description, and direct link to its page.
    - Cards should feel related but visually distinct.
+   - MEND card role: adaptive medical-facility management and simulation system.
 
 5. Connected System Map
    - A visual system map showing Syvursoft connected to RADex, MEND, and ADAM.
@@ -88,10 +89,14 @@ Use the current homepage content as the base:
 
 Create a product page with this structure:
 
-- Hero focused on critical care and emergency workflow support.
-- Problem section: high-pressure clinical decisions, scattered patient data, time-sensitive interpretation.
-- Solution section: MEND organizes critical data and supports faster clinical reasoning.
-- Workflow section: intake, assessment, monitoring, decisions, follow-up.
+- Hero focused on building and controlling a digital twin of any medical facility.
+- Problem section: hospitals and medical centers rely on scattered paperwork, disconnected departments, delayed maintenance reporting, weak audit visibility, and manual administrative workflows.
+- Solution section: MEND simulates the facility exactly as it is, then gives each team the dashboards and tools needed to manage work from its own operational corner.
+- Facility simulation section: show how the real building, departments, units, rooms, workflows, and responsibility zones are represented inside the system.
+- Clinical workflow section: doctor and nurse dashboards, patient management, automatic file writing, hospital form automation, laboratory workflow, radiology workflow, built-in PACS, and DICOM viewer.
+- Operations section: maintenance detection and reporting with exact problem location, HR, finance, attendance, call system, audit system, administrative work-from-home support, and access from any device.
+- Specialized units section: blood bank management and dialysis unit management.
+- Audit section: fast one-minute audit visibility across the facility.
 - CTA: book a demo or contact Syvursoft.
 
 ### `/adam`
