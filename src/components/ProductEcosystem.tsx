@@ -125,80 +125,101 @@ export default function ProductEcosystem() {
 
         <div className="mt-12 grid gap-6 lg:grid-cols-3">
           {homepageProducts.map(
-            ({ id, name, shortRole, description, href }) => {
+            ({ id, name, shortRole, description, href, status }) => {
               const style = productCardStyles[id];
+              const cardContent = (
+                <>
+                  <div
+                    className={`absolute inset-x-0 top-0 h-1 bg-gradient-to-r ${style.halo}`}
+                  />
+                  <div className="absolute inset-0 translate-x-[-120%] bg-[linear-gradient(120deg,transparent,rgba(14,165,233,0.08),transparent)] transition duration-700 group-hover:translate-x-[120%]" />
+                  <div data-product-card-header className="relative p-6">
+                    <div className="relative flex items-start justify-between gap-5">
+                      <div>
+                        <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">
+                          {shortRole}
+                        </p>
+                        <h3 className="mt-3 text-4xl font-bold tracking-[-0.04em] text-slate-950">
+                          {name}
+                        </h3>
+                      </div>
+                      <div
+                        className={`flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl ring-1 ${style.icon} transition duration-300 group-hover:scale-110`}
+                      >
+                        <Image
+                          src="/images/syvursoft-logo.png"
+                          alt=""
+                          width={48}
+                          height={27}
+                          className="h-auto w-10 object-contain"
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="flex flex-1 flex-col justify-between p-6">
+                    <div>
+                      <p className="text-base leading-7 text-slate-600">
+                        {description}
+                      </p>
+                      <div className="mt-6 grid grid-cols-2 gap-2">
+                        {productProof[id].map((item) => (
+                          <div
+                            key={item}
+                            className="flex min-h-10 items-center gap-2 rounded-xl border border-slate-200 bg-slate-50/80 px-3 py-2 text-xs font-semibold text-slate-700 transition group-hover:border-sky-100 group-hover:bg-sky-50/60"
+                          >
+                            <Image
+                              src="/images/syvursoft-logo.png"
+                              alt=""
+                              width={20}
+                              height={11}
+                              className="h-auto w-4 shrink-0 object-contain"
+                            />
+                            <span>{item}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div className="mt-8 flex items-center justify-between border-t border-slate-100 pt-5 text-sm font-semibold text-slate-950">
+                      <span>
+                        {status === "under-development"
+                          ? "Under development"
+                          : `Open ${name}`}
+                      </span>
+                      {status !== "under-development" && (
+                        <ArrowUpRight
+                          className="h-5 w-5 text-sky-600 transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                          aria-hidden="true"
+                        />
+                      )}
+                    </div>
+                  </div>
+                </>
+              );
+
+              if (status === "under-development" || !href) {
+                return (
+                  <article
+                    key={id}
+                    data-product-card
+                    aria-label={`${name} is under development`}
+                    className="group relative flex min-h-[390px] flex-col overflow-hidden rounded-[1.5rem] border border-slate-200/80 bg-white/90 opacity-100 shadow-[0_24px_80px_rgba(96,165,250,0.10)] backdrop-blur transition duration-500"
+                  >
+                    {cardContent}
+                  </article>
+                );
+              }
 
               return (
-              <Link
-                key={id}
-                href={href}
-                data-product-card
-                className="group relative flex min-h-[390px] flex-col overflow-hidden rounded-[1.5rem] border border-slate-200/80 bg-white/90 shadow-[0_24px_80px_rgba(96,165,250,0.10)] backdrop-blur opacity-100 transition duration-500 hover:-translate-y-2 hover:border-sky-200 hover:shadow-[0_32px_72px_rgba(15,23,42,0.12)] focus:outline-none focus:ring-2 focus:ring-cyan-300"
-              >
-                <div
-                  className={`absolute inset-x-0 top-0 h-1 bg-gradient-to-r ${style.halo}`}
-                />
-                <div className="absolute inset-0 translate-x-[-120%] bg-[linear-gradient(120deg,transparent,rgba(14,165,233,0.08),transparent)] transition duration-700 group-hover:translate-x-[120%]" />
-                <div
-                  data-product-card-header
-                  className="relative p-6"
+                <Link
+                  key={id}
+                  href={href}
+                  data-product-card
+                  className="group relative flex min-h-[390px] flex-col overflow-hidden rounded-[1.5rem] border border-slate-200/80 bg-white/90 opacity-100 shadow-[0_24px_80px_rgba(96,165,250,0.10)] backdrop-blur transition duration-500 hover:-translate-y-2 hover:border-sky-200 hover:shadow-[0_32px_72px_rgba(15,23,42,0.12)] focus:outline-none focus:ring-2 focus:ring-cyan-300"
                 >
-                  <div className="relative flex items-start justify-between gap-5">
-                    <div>
-                      <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">
-                        {shortRole}
-                      </p>
-                      <h3 className="mt-3 text-4xl font-bold tracking-[-0.04em] text-slate-950">
-                        {name}
-                      </h3>
-                    </div>
-                    <div
-                      className={`flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl ring-1 ${style.icon} transition duration-300 group-hover:scale-110`}
-                    >
-                      <Image
-                        src="/images/syvursoft-logo.png"
-                        alt=""
-                        width={48}
-                        height={27}
-                        className="h-auto w-10 object-contain"
-                      />
-                    </div>
-                  </div>
-                </div>
-
-                <div className="flex flex-1 flex-col justify-between p-6">
-                  <div>
-                    <p className="text-base leading-7 text-slate-600">
-                      {description}
-                    </p>
-                    <div className="mt-6 grid grid-cols-2 gap-2">
-                      {productProof[id].map((item) => (
-                        <div
-                          key={item}
-                          className="flex min-h-10 items-center gap-2 rounded-xl border border-slate-200 bg-slate-50/80 px-3 py-2 text-xs font-semibold text-slate-700 transition group-hover:border-sky-100 group-hover:bg-sky-50/60"
-                        >
-                          <Image
-                            src="/images/syvursoft-logo.png"
-                            alt=""
-                            width={20}
-                            height={11}
-                            className="h-auto w-4 shrink-0 object-contain"
-                          />
-                          <span>{item}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-
-                  <div className="mt-8 flex items-center justify-between border-t border-slate-100 pt-5 text-sm font-semibold text-slate-950">
-                    <span>Open {name}</span>
-                    <ArrowUpRight
-                      className="h-5 w-5 text-sky-600 transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-                      aria-hidden="true"
-                    />
-                  </div>
-                </div>
-              </Link>
+                  {cardContent}
+                </Link>
               );
             },
           )}

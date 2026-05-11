@@ -43,7 +43,7 @@ const ecosystemItems = [
         bg: "bg-amber-50",
         border: "border-amber-200",
         text: "text-amber-900",
-        href: "/adam"
+        href: "/#products"
     }
 ];
 

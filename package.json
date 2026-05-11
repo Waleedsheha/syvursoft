@@ -7,6 +7,7 @@
     "dev": "next dev",
     "build": "next build --webpack",
     "start": "next start",
+    "test:adam": "node scripts/assert-adam-under-development.mjs",
     "lint": "eslint"
   },
   "dependencies": {

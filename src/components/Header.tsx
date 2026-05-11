@@ -34,7 +34,6 @@ export default function Header() {
       submenu: [
         { name: "RADex", href: "/radex" },
         { name: "MEND", href: "/mend" },
-        { name: "ADAM", href: "/adam" },
       ]
     },
     { name: "About Us", href: "/about" },

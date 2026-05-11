@@ -8,7 +8,8 @@ export type ProductInfo = {
   name: string;
   shortRole: string;
   description: string;
-  href: string;
+  href?: string;
+  status?: "under-development";
   accent: string;
   Icon: LucideIcon;
 };
@@ -37,10 +38,10 @@ export const products: ProductInfo[] = [
   {
     id: "adam",
     name: "ADAM",
-    shortRole: "Clinical intelligence layer",
+    shortRole: "Under development",
     description:
       "AI orchestration for insight, automation, decision support, and cross-product intelligence across the Syvursoft ecosystem.",
-    href: "/adam",
+    status: "under-development",
     accent: "from-emerald-500 to-teal-600",
     Icon: BrainCircuit,
   },
