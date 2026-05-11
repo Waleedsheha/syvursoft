@@ -40,7 +40,7 @@ export default function LegacyProductsDialog({ open, onOpenChange }: LegacyProdu
                             animate={{ scale: 1, opacity: 1, y: 0 }}
                             exit={{ scale: 0.95, opacity: 0, y: 20 }}
                             transition={{ type: "spring", damping: 25, stiffness: 300 }}
-                            className="bg-[#0a192f] w-full max-w-lg rounded-3xl overflow-hidden shadow-2xl border border-white/10 pointer-events-auto relative"
+                            className="pointer-events-auto relative w-full max-w-lg overflow-hidden rounded-3xl border border-white/10 bg-[#070c17] shadow-2xl"
                         >
                             {/* Header */}
                             <div className="p-6 border-b border-white/10 flex items-center justify-between">
@@ -66,9 +66,9 @@ export default function LegacyProductsDialog({ open, onOpenChange }: LegacyProdu
                                     <Link
                                         href="https://play.google.com/store/apps/details?id=com.syvursoft.atria"
                                         target="_blank"
-                                        className="group relative bg-white/5 hover:bg-white/10 border border-white/5 hover:border-orange-500/30 rounded-2xl p-6 transition-all duration-300 flex flex-col items-center text-center gap-4"
+                                        className="group relative flex flex-col items-center gap-4 rounded-2xl border border-white/5 bg-white/[0.05] p-6 text-center transition-all duration-300 hover:-translate-y-1 hover:border-cyan-300/30 hover:bg-white/10"
                                     >
-                                        <div className="absolute inset-0 bg-gradient-to-br from-orange-500/0 to-orange-500/0 group-hover:to-orange-500/5 rounded-2xl transition-all duration-500" />
+                                        <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-cyan-500/0 to-cyan-500/0 transition-all duration-500 group-hover:to-cyan-500/10" />
 
                                         <div className="relative w-24 h-24 rounded-2xl overflow-hidden shadow-lg group-hover:scale-105 transition-transform duration-300">
                                             <Image
@@ -84,7 +84,7 @@ export default function LegacyProductsDialog({ open, onOpenChange }: LegacyProdu
                                                 Make Echo Reports
                                             </p>
                                         </div>
-                                        <div className="mt-2 text-xs font-semibold tracking-wider text-orange-500 uppercase flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity translate-y-2 group-hover:translate-y-0">
+                                        <div className="mt-2 flex translate-y-2 items-center gap-1 text-xs font-semibold uppercase tracking-wider text-cyan-300 opacity-0 transition-opacity group-hover:translate-y-0 group-hover:opacity-100">
                                             View on Store
                                         </div>
                                     </Link>

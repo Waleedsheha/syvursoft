@@ -82,15 +82,15 @@ export default function StaggeredMenu({ open, setOpen, links }: StaggeredMenuPro
 
                     {/* Sidebar */}
                     <motion.div
-                        className="fixed top-0 right-0 h-screen w-full md:w-[450px] bg-[#0a192f] z-[100] p-8 flex flex-col justify-between shadow-2xl border-l border-white/10 overflow-y-auto"
+                        className="fixed right-0 top-0 z-[100] flex h-screen w-full flex-col justify-between overflow-y-auto border-l border-white/10 bg-[#070c17] p-8 shadow-2xl md:w-[450px]"
                         initial="closed"
                         animate="open"
                         exit="closed"
                         variants={sidebarVariants}
                     >
                         {/* Decorative Background Elements */}
-                        <div className="absolute top-0 right-0 w-64 h-64 bg-orange-500/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none" />
-                        <div className="absolute bottom-0 left-0 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2 pointer-events-none" />
+                        <div className="pointer-events-none absolute right-0 top-0 h-64 w-64 -translate-y-1/2 translate-x-1/2 rounded-full bg-cyan-400/10 blur-3xl" />
+                        <div className="pointer-events-none absolute bottom-0 left-0 h-64 w-64 -translate-x-1/2 translate-y-1/2 rounded-full bg-blue-500/10 blur-3xl" />
 
                         <div className="flex flex-col gap-6 mt-16 relative z-10">
                             {links.map((link, idx) => (
@@ -103,10 +103,10 @@ export default function StaggeredMenu({ open, setOpen, links }: StaggeredMenuPro
                                         <div className="flex flex-col">
                                             <button
                                                 onClick={() => toggleSubmenu(link.name)}
-                                                className="text-4xl font-bold text-white hover:text-[#f97316] transition-colors flex items-center justify-between group w-full text-left"
+                                                className="group flex w-full items-center justify-between text-left text-4xl font-bold tracking-[-0.04em] text-white transition-colors hover:text-cyan-200"
                                             >
                                                 <div className="flex items-center gap-4">
-                                                    <span className="text-sm font-light text-gray-500 group-hover:text-[#f97316]/50 transition-colors">
+                                                    <span className="text-sm font-light text-slate-500 transition-colors group-hover:text-cyan-300/70">
                                                         0{idx + 1}
                                                     </span>
                                                     {link.name}
@@ -122,7 +122,7 @@ export default function StaggeredMenu({ open, setOpen, links }: StaggeredMenuPro
                                                         initial={{ opacity: 0, height: 0 }}
                                                         animate={{ opacity: 1, height: "auto" }}
                                                         exit={{ opacity: 0, height: 0 }}
-                                                        className="overflow-hidden bg-[#0f2440]/50 rounded-xl mt-4"
+                                                        className="mt-4 overflow-hidden rounded-2xl border border-white/10 bg-white/[0.04]"
                                                     >
                                                         <div className="flex flex-col p-4 gap-2">
                                                             {link.submenu.map((subItem) => (
@@ -133,9 +133,9 @@ export default function StaggeredMenu({ open, setOpen, links }: StaggeredMenuPro
                                                                             subItem.action?.();
                                                                             setOpen(false);
                                                                         }}
-                                                                        className="text-xl text-gray-300 hover:text-[#f97316] py-2 px-4 rounded-lg hover:bg-white/5 transition-all flex items-center gap-3 w-full text-left"
+                                                                        className="flex w-full items-center gap-3 rounded-xl px-4 py-2 text-left text-xl text-slate-300 transition-all hover:bg-white/[0.06] hover:text-cyan-200"
                                                                     >
-                                                                        <div className="w-1.5 h-1.5 rounded-full bg-[#f97316]" />
+                                                                        <div className="h-1.5 w-1.5 rounded-full bg-cyan-300" />
                                                                         {subItem.name}
                                                                     </button>
                                                                 ) : (
@@ -143,9 +143,9 @@ export default function StaggeredMenu({ open, setOpen, links }: StaggeredMenuPro
                                                                         key={subItem.name}
                                                                         href={subItem.href}
                                                                         onClick={() => setOpen(false)}
-                                                                        className="text-xl text-gray-300 hover:text-[#f97316] py-2 px-4 rounded-lg hover:bg-white/5 transition-all flex items-center gap-3"
+                                                                        className="flex items-center gap-3 rounded-xl px-4 py-2 text-xl text-slate-300 transition-all hover:bg-white/[0.06] hover:text-cyan-200"
                                                                     >
-                                                                        <div className="w-1.5 h-1.5 rounded-full bg-[#f97316]" />
+                                                                        <div className="h-1.5 w-1.5 rounded-full bg-cyan-300" />
                                                                         {subItem.name}
                                                                     </Link>
                                                                 )
@@ -165,9 +165,9 @@ export default function StaggeredMenu({ open, setOpen, links }: StaggeredMenuPro
                                                 }
                                                 setOpen(false);
                                             }}
-                                            className="text-4xl font-bold text-white hover:text-[#f97316] transition-colors flex items-center gap-4 group"
+                                            className="group flex items-center gap-4 text-4xl font-bold tracking-[-0.04em] text-white transition-colors hover:text-cyan-200"
                                         >
-                                            <span className="text-sm font-light text-gray-500 group-hover:text-[#f97316]/50 transition-colors">
+                                            <span className="text-sm font-light text-slate-500 transition-colors group-hover:text-cyan-300/70">
                                                 0{idx + 1}
                                             </span>
                                             {link.name}
@@ -188,7 +188,7 @@ export default function StaggeredMenu({ open, setOpen, links }: StaggeredMenuPro
                                     onClick={() => setOpen(false)}
                                     whileHover={{ scale: 1.05 }}
                                     whileTap={{ scale: 0.95 }}
-                                    className="flex items-center gap-2 text-sm font-medium text-gray-400 hover:text-white"
+                                    className="flex items-center gap-2 text-sm font-medium text-slate-400 hover:text-cyan-200"
                                 >
                                     Close <ArrowRight size={16} />
                                 </motion.button>

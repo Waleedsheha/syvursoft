@@ -8,8 +8,9 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Syvursoft - Healthcare Software Reimagined | Alex RIS & Mend HMS",
-  description: "Transform your healthcare facility with Alex Scan & Lab (RIS) and Mend Hospital Management System. 17 integrated modules, bilingual support, 11-week implementation.",
+  title: "Syvursoft - Medical Facility Software, RADex, MEND, and ADAM",
+  description:
+    "Syvursoft builds medical software for radiology, complete facility management, and clinical intelligence through RADex, MEND, and ADAM.",
 };
 
 export default function RootLayout({
