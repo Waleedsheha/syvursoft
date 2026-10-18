@@ -9,6 +9,7 @@ export interface NavLink {
     name: string;
     href: string;
     action?: () => void;
+    external?: boolean;
     submenu?: NavLink[];
 }
 
@@ -142,6 +143,8 @@ export default function StaggeredMenu({ open, setOpen, links }: StaggeredMenuPro
                                                                     <Link
                                                                         key={subItem.name}
                                                                         href={subItem.href}
+                                                                        target={subItem.external ? "_blank" : undefined}
+                                                                        rel={subItem.external ? "noopener noreferrer" : undefined}
                                                                         onClick={() => setOpen(false)}
                                                                         className="flex items-center gap-3 rounded-xl px-4 py-2 text-xl text-slate-300 transition-all hover:bg-white/[0.06] hover:text-cyan-200"
                                                                     >

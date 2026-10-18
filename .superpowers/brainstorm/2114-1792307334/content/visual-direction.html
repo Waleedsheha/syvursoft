@@ -1,0 +1,201 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Instrument+Serif:ital@0;1&family=Sora:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+  .dir-list { display: grid; grid-template-columns: 1fr; gap: 1.75rem; max-width: 1180px; }
+  .dir-list .card-body p { max-width: 900px; }
+  .dir-list .card-body .motion { margin-top: .35rem; font-size: .8rem; color: var(--text-secondary); }
+  .rec { display: inline-block; margin-left: .5rem; padding: .1rem .5rem; border-radius: 999px; font-size: .68rem; font-weight: 600; background: var(--selected-bg); color: var(--accent); vertical-align: middle; }
+
+  .mk { position: relative; height: 430px; overflow: hidden; display: grid; grid-template-columns: 1.2fr .8fr; font-family: 'DM Sans'; }
+  .mk h1 { margin: 0; }
+  .nav { display: flex; align-items: center; justify-content: space-between; padding: 9px 14px 9px 12px; border-radius: 999px; font-size: 10px; letter-spacing: .14em; text-transform: uppercase; font-weight: 600; }
+  .logo { display: flex; align-items: center; gap: 7px; font-family: 'Sora'; font-weight: 700; font-size: 13px; letter-spacing: -.02em; text-transform: none; }
+  .logo i { width: 18px; height: 11px; border-radius: 50%; display: inline-block; }
+
+  /* ---------- A · Clinical Precision ---------- */
+  .mkA-hero { position: relative; padding: 22px 34px 30px 26px; background: #070c17; color: #fff; overflow: hidden; }
+  .mkA-hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 18% 10%, rgba(14,165,233,.22), transparent 52%), radial-gradient(ellipse at 90% 85%, rgba(37,99,235,.18), transparent 50%); }
+  .mkA-hero::after { content: ''; position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px); background-size: 44px 44px; mask-image: radial-gradient(ellipse at 30% 40%, #000 20%, transparent 75%); }
+  .mkA-hero > * { position: relative; z-index: 1; }
+  .mkA-hero .nav { background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.09); color: #cbd5e1; }
+  .mkA-hero .logo i { background: radial-gradient(circle, #22d3ee 0 30%, #2563eb 31% 60%, #0f172a 61%); }
+  .mkA-hero h1 { margin-top: 44px; font-family: 'Sora'; font-weight: 700; font-size: 37px; line-height: 1.02; letter-spacing: -.045em; max-width: 520px; }
+  .mkA-hero h1 span { background: linear-gradient(90deg, #67e8f9, #38bdf8 45%, #3b82f6); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .mkA-sub { margin-top: 16px; max-width: 430px; font-size: 13.5px; line-height: 1.6; color: #94a3b8; }
+  .mkA-ctas { display: flex; gap: 10px; margin-top: 22px; font-size: 12px; font-weight: 600; }
+  .mkA-ctas b { padding: 11px 18px; border-radius: 999px; color: #fff; background: linear-gradient(90deg, #2563eb, #0ea5e9 55%, #22d3ee); box-shadow: 0 10px 30px -8px rgba(14,165,233,.65), inset 0 1px 0 rgba(255,255,255,.35); }
+  .mkA-ctas em { font-style: normal; padding: 11px 18px; border-radius: 999px; color: #e2e8f0; border: 1px solid rgba(255,255,255,.14); background: rgba(255,255,255,.04); }
+  .mkA-stats { display: flex; gap: 22px; margin-top: 30px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,.08); font-size: 10px; color: #64748b; letter-spacing: .12em; text-transform: uppercase; font-weight: 600; }
+  .mkA-stats b { display: block; font-family: 'Sora'; font-size: 17px; color: #e2e8f0; letter-spacing: -.02em; text-transform: none; margin-bottom: 2px; }
+
+  .mkA-light { position: relative; background: #eef4f9; display: flex; align-items: center; justify-content: center; padding: 22px; }
+  .mkA-light::before { content: ''; position: absolute; width: 260px; height: 260px; border-radius: 50%; background: rgba(56,189,248,.16); filter: blur(50px); top: 10px; left: 30px; }
+  .mkA-card { position: relative; width: 100%; max-width: 330px; border-radius: 22px; padding: 1px; background: linear-gradient(150deg, rgba(56,189,248,.75), rgba(226,232,240,.9) 38%, rgba(226,232,240,.9) 70%, rgba(16,185,129,.45)); box-shadow: 0 30px 60px -24px rgba(15,23,42,.35), 0 12px 24px -12px rgba(14,165,233,.25); transform: translateY(-6px); }
+  .mkA-in { position: relative; border-radius: 21px; background: #fff; padding: 12px; overflow: hidden; }
+  .mkA-in::before { content: ''; position: absolute; width: 240px; height: 240px; left: -60px; top: -90px; background: radial-gradient(circle, rgba(56,189,248,.18), transparent 65%); }
+  .viz { position: relative; height: 128px; border-radius: 14px; background: #060a14; overflow: hidden; }
+  .viz .scan { position: absolute; left: 50%; top: 50%; width: 112px; height: 104px; transform: translate(-50%,-50%); border-radius: 48% 52% 46% 54%; background: radial-gradient(ellipse at 50% 45%, #e2e8f0 0%, #94a3b8 22%, #334155 46%, #0f172a 64%, transparent 72%); }
+  .viz .h, .viz .v { position: absolute; background: rgba(34,211,238,.55); }
+  .viz .h { left: 0; right: 0; top: 50%; height: 1px; }
+  .viz .v { top: 0; bottom: 0; left: 50%; width: 1px; }
+  .viz .ring { position: absolute; left: 50%; top: 50%; width: 46px; height: 46px; transform: translate(-50%,-50%); border: 1px dashed rgba(103,232,249,.8); border-radius: 50%; }
+  .viz .tag { position: absolute; font: 600 8.5px/1 'DM Sans'; letter-spacing: .1em; color: #67e8f9; text-transform: uppercase; }
+  .viz .tl { left: 10px; top: 10px; } .viz .br { right: 10px; bottom: 10px; color: #94a3b8; }
+  .mkA-meta { position: relative; padding: 14px 6px 4px; }
+  .mkA-meta small { font-size: 9.5px; letter-spacing: .16em; text-transform: uppercase; font-weight: 600; color: #64748b; }
+  .mkA-meta strong { display: block; margin-top: 4px; font-family: 'Sora'; font-size: 26px; letter-spacing: -.04em; color: #0b1220; }
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+  .mkA-meta .chips span { font-size: 10.5px; font-weight: 600; color: #334155; padding: 5px 9px 5px 8px; border-radius: 8px; background: #f1f5f9; border: 1px solid #e2e8f0; display: inline-flex; align-items: center; gap: 5px; }
+  .mkA-meta .chips span::before { content: ''; width: 5px; height: 5px; border-radius: 50%; background: #0ea5e9; }
+  .mkA-foot { display: flex; justify-content: space-between; align-items: center; margin-top: 14px; padding-top: 11px; border-top: 1px solid #eef2f7; font-size: 12px; font-weight: 600; color: #0b1220; }
+  .mkA-foot span { width: 26px; height: 26px; border-radius: 50%; display: grid; place-items: center; background: #0b1220; color: #fff; font-size: 12px; }
+
+  /* ---------- B · Midnight Instrument ---------- */
+  .mkB { background: #04060c; color: #fff; }
+  .mkB::before { content: ''; position: absolute; inset: -20%; background: radial-gradient(40% 50% at 20% 20%, rgba(37,99,235,.35), transparent 70%), radial-gradient(35% 45% at 75% 65%, rgba(34,211,238,.22), transparent 70%), radial-gradient(30% 40% at 55% 105%, rgba(16,185,129,.22), transparent 70%); filter: blur(10px); }
+  .mkB::after { content: ''; position: absolute; inset: 0; opacity: .18; background-image: radial-gradient(rgba(255,255,255,.5) .5px, transparent .6px); background-size: 3px 3px; mix-blend-mode: overlay; }
+  .mkB > div { position: relative; z-index: 1; }
+  .mkB-hero { padding: 22px 30px 30px 26px; }
+  .mkB-hero .nav { background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.08); color: #94a3b8; backdrop-filter: blur(8px); }
+  .mkB-hero .logo { color: #fff; }
+  .mkB-hero .logo i { background: radial-gradient(circle, #a5f3fc 0 28%, #22d3ee 29% 55%, #082f49 56%); box-shadow: 0 0 14px rgba(34,211,238,.8); }
+  .mkB-hero h1 { margin-top: 46px; font-family: 'Sora'; font-size: 40px; line-height: 1; letter-spacing: -.05em; font-weight: 600; max-width: 540px; }
+  .mkB-hero h1 .thin { font-weight: 300; color: #94a3b8; }
+  .mkB-sub { margin-top: 16px; max-width: 420px; font-size: 13.5px; line-height: 1.6; color: #8b9bb4; }
+  .mkB-ctas { display: flex; gap: 10px; margin-top: 22px; font-size: 12px; font-weight: 600; }
+  .mkB-ctas b { padding: 11px 18px; border-radius: 999px; color: #04060c; background: #fff; box-shadow: 0 0 0 4px rgba(255,255,255,.06), 0 0 40px rgba(34,211,238,.35); }
+  .mkB-ctas em { font-style: normal; padding: 11px 18px; border-radius: 999px; color: #cbd5e1; border: 1px solid rgba(255,255,255,.12); }
+  .mkB-ticker { display: flex; gap: 8px; margin-top: 30px; }
+  .mkB-ticker span { font-size: 10px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: #64748b; padding: 6px 10px; border-radius: 999px; border: 1px solid rgba(255,255,255,.07); background: rgba(255,255,255,.02); }
+  .mkB-ticker span i { display: inline-block; width: 5px; height: 5px; border-radius: 50%; background: #22d3ee; box-shadow: 0 0 8px #22d3ee; margin-right: 6px; vertical-align: 1px; }
+
+  .mkB-side { display: flex; align-items: center; justify-content: center; padding: 22px; }
+  .mkB-card { width: 100%; max-width: 330px; padding: 1px; border-radius: 22px; background: conic-gradient(from 200deg at 50% 50%, rgba(34,211,238,0) 0deg, rgba(34,211,238,.95) 70deg, rgba(59,130,246,.6) 120deg, rgba(16,185,129,0) 200deg, rgba(34,211,238,0) 360deg); box-shadow: 0 0 70px -10px rgba(34,211,238,.35); }
+  .mkB-in { position: relative; border-radius: 21px; background: linear-gradient(180deg, rgba(15,23,42,.92), rgba(5,8,16,.96)); padding: 12px; overflow: hidden; }
+  .mkB-in .idx { position: absolute; right: 14px; top: 140px; font-family: 'Sora'; font-size: 54px; font-weight: 700; letter-spacing: -.06em; color: transparent; -webkit-text-stroke: 1px rgba(148,163,184,.25); }
+  .mkB-in .viz { background: #02040a; border: 1px solid rgba(34,211,238,.18); box-shadow: inset 0 0 40px rgba(34,211,238,.08); }
+  .mkB-in .viz .scan { background: radial-gradient(ellipse at 50% 45%, #a5f3fc 0%, #22d3ee 18%, #0e7490 40%, #082f49 62%, transparent 72%); opacity: .9; }
+  .mkB-meta { padding: 14px 6px 4px; }
+  .mkB-meta small { font-size: 9.5px; letter-spacing: .16em; text-transform: uppercase; font-weight: 600; color: #67e8f9; }
+  .mkB-meta strong { display: block; margin-top: 4px; font-family: 'Sora'; font-size: 26px; letter-spacing: -.04em; }
+  .mkB-meta .chips span { font-size: 10.5px; font-weight: 600; color: #cbd5e1; padding: 5px 9px; border-radius: 999px; background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.09); }
+  .mkB-foot { display: flex; justify-content: space-between; align-items: center; margin-top: 14px; padding-top: 11px; border-top: 1px solid rgba(255,255,255,.07); font-size: 12px; font-weight: 600; color: #e2e8f0; }
+  .mkB-foot span { color: #22d3ee; }
+
+  /* ---------- C · Editorial Light ---------- */
+  .mkC { background: #f7f8fa; color: #0b1220; grid-template-columns: 1.1fr .9fr; }
+  .mkC-hero { padding: 22px 30px 30px 26px; }
+  .mkC-hero .nav { background: #fff; border: 1px solid #e6e9ef; color: #64748b; box-shadow: 0 6px 20px -12px rgba(15,23,42,.25); }
+  .mkC-hero .logo i { background: radial-gradient(circle, #22d3ee 0 30%, #2563eb 31% 60%, #0f172a 61%); }
+  .mkC-hero h1 { margin-top: 40px; font-family: 'Instrument Serif'; font-weight: 400; font-size: 50px; line-height: .98; letter-spacing: -.02em; max-width: 520px; }
+  .mkC-hero h1 em { color: #2563eb; }
+  .mkC-sub { margin-top: 14px; max-width: 410px; font-size: 13.5px; line-height: 1.6; color: #5b6475; }
+  .mkC-ctas { display: flex; gap: 16px; align-items: center; margin-top: 22px; font-size: 12px; font-weight: 600; }
+  .mkC-ctas b { padding: 11px 18px; border-radius: 999px; color: #fff; background: #0b1220; }
+  .mkC-ctas em { font-style: normal; color: #0b1220; border-bottom: 1px solid #0b1220; padding-bottom: 2px; }
+  .mkC-index { display: flex; gap: 0; margin-top: 30px; border-top: 1px solid #e3e6ec; font-size: 11px; color: #5b6475; }
+  .mkC-index span { flex: 1; padding: 10px 0 0; }
+  .mkC-index b { display: block; font-family: 'Instrument Serif'; font-size: 20px; font-weight: 400; color: #0b1220; }
+
+  .mkC-side { display: flex; align-items: center; justify-content: center; padding: 22px 26px 22px 0; }
+  .mkC-card { width: 100%; max-width: 360px; background: #fff; border-radius: 6px; padding: 20px 22px; box-shadow: 0 1px 0 rgba(15,23,42,.04), 0 24px 50px -28px rgba(15,23,42,.35); border: 1px solid #eceef2; }
+  .mkC-top { display: flex; justify-content: space-between; font-size: 10px; letter-spacing: .14em; text-transform: uppercase; font-weight: 600; color: #8a93a3; }
+  .mkC-word { margin-top: 18px; font-family: 'Instrument Serif'; font-size: 58px; line-height: .9; letter-spacing: -.02em; }
+  .mkC-card p { margin-top: 12px; font-size: 12.5px; line-height: 1.6; color: #5b6475; }
+  .mkC-rows { margin-top: 12px; border-top: 1px solid #eceef2; }
+  .mkC-rows div { display: flex; justify-content: space-between; padding: 7px 0; border-bottom: 1px solid #eceef2; font-size: 11.5px; font-weight: 500; color: #1f2937; }
+  .mkC-rows div span { color: #94a3b8; }
+  .mkC-foot { margin-top: 14px; font-size: 12px; font-weight: 600; color: #2563eb; }
+</style>
+
+<h2>Which direction should the premium Syvursoft homepage take?</h2>
+<p class="subtitle">Static previews of the hero and one product card, using real Syvursoft copy. The motion for each direction is described underneath. Click the one that feels right.</p>
+
+<div class="cards dir-list">
+
+  <div class="card" data-choice="a" onclick="toggleSelect(this)">
+    <div class="mk mkA">
+      <div class="mkA-hero">
+        <div class="nav"><span class="logo"><i></i>Syvursoft</span><span>Home &nbsp; Products &nbsp; About &nbsp; Contact</span></div>
+        <h1>Syvursoft builds the software <span>backbone</span> for medical facilities.</h1>
+        <p class="mkA-sub">RADex, MEND, and ADAM connect imaging, facility operations, and clinical intelligence into one practical product ecosystem.</p>
+        <div class="mkA-ctas"><b>Explore products &rarr;</b><em>About Syvursoft</em></div>
+        <div class="mkA-stats"><span><b>Made by doctors</b>Clinical origin</span><span><b>3 products</b>One ecosystem</span></div>
+      </div>
+      <div class="mkA-light">
+        <div class="mkA-card"><div class="mkA-in">
+          <div class="viz"><div class="scan"></div><div class="h"></div><div class="v"></div><div class="ring"></div><span class="tag tl">AX T2 &middot; Series 4</span><span class="tag br">512 &times; 512</span></div>
+          <div class="mkA-meta">
+            <small>Radiology engine</small>
+            <strong>RADex</strong>
+            <div class="chips"><span>RIS</span><span>PACS</span><span>DICOM</span><span>Reports</span></div>
+            <div class="mkA-foot">Open RADex <span>&#8599;</span></div>
+          </div>
+        </div></div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>A &middot; Clinical Precision <span class="rec">Recommended</span></h3>
+      <p>Your MEND standard done at full strength: dark cinematic hero, light blue-gray sections, Sora + DM Sans. Cards get gradient hairline borders, a soft cursor spotlight, and a real product visual (a viewport for RADex, a facility plan for MEND, a signal graph for ADAM) in place of the empty icon tiles. It stays consistent with the /mend page.</p>
+      <p class="motion">Motion: GSAP headline line reveals, ScrollTrigger section reveals, a cursor spotlight on the cards, and the system map drawing itself as you scroll. Calm and precise.</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="b" onclick="toggleSelect(this)">
+    <div class="mk mkB">
+      <div class="mkB-hero">
+        <div class="nav"><span class="logo"><i></i>Syvursoft</span><span>Home &nbsp; Products &nbsp; About &nbsp; Contact</span></div>
+        <h1><span class="thin">The software backbone</span> for medical facilities.</h1>
+        <p class="mkB-sub">RADex, MEND, and ADAM connect imaging, facility operations, and clinical intelligence into one practical product ecosystem.</p>
+        <div class="mkB-ctas"><b>Explore products &rarr;</b><em>About Syvursoft</em></div>
+        <div class="mkB-ticker"><span><i></i>Imaging</span><span><i></i>Operations</span><span><i></i>Intelligence</span></div>
+      </div>
+      <div class="mkB-side">
+        <div class="mkB-card"><div class="mkB-in">
+          <span class="idx">01</span>
+          <div class="viz"><div class="scan"></div><div class="h"></div><div class="v"></div><div class="ring"></div><span class="tag tl">AX T2 &middot; Series 4</span><span class="tag br">512 &times; 512</span></div>
+          <div class="mkB-meta">
+            <small>Radiology engine</small>
+            <strong>RADex</strong>
+            <div class="chips"><span>RIS</span><span>PACS</span><span>DICOM</span><span>Reports</span></div>
+            <div class="mkB-foot">Open RADex <span>&rarr;</span></div>
+          </div>
+        </div></div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>B &middot; Midnight Instrument</h3>
+      <p>The whole homepage goes dark: aurora gradients, fine grain, luminous cyan. Cards look like glowing instrument panels with animated light running around the border. The most dramatic option, but the homepage would no longer match the light sections of the MEND and RADex pages.</p>
+      <p class="motion">Motion: product cards pinned on scroll and revealed one at a time, light circling the card borders, magnetic buttons, counters ticking up. Bold and cinematic.</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="c" onclick="toggleSelect(this)">
+    <div class="mk mkC">
+      <div class="mkC-hero">
+        <div class="nav"><span class="logo"><i></i>Syvursoft</span><span>Home &nbsp; Products &nbsp; About &nbsp; Contact</span></div>
+        <h1>The <em>software backbone</em> for medical facilities.</h1>
+        <p class="mkC-sub">RADex, MEND, and ADAM connect imaging, facility operations, and clinical intelligence into one practical product ecosystem.</p>
+        <div class="mkC-ctas"><b>Explore products &rarr;</b><em>About Syvursoft</em></div>
+        <div class="mkC-index"><span><b>RADex</b>Imaging</span><span><b>MEND</b>Operations</span><span><b>ADAM</b>Intelligence</span></div>
+      </div>
+      <div class="mkC-side">
+        <div class="mkC-card">
+          <div class="mkC-top"><span>01 / 03</span><span>Radiology engine</span></div>
+          <div class="mkC-word">RADex</div>
+          <p>Unified RIS, PACS, DICOM viewer, reporting, scheduling, billing, and operational tools for diagnostic imaging teams.</p>
+          <div class="mkC-rows"><div>RIS<span>01</span></div><div>PACS<span>02</span></div><div>DICOM viewer<span>03</span></div></div>
+          <div class="mkC-foot">Open RADex &rarr;</div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>C &middot; Editorial Light</h3>
+      <p>Bright and editorial, like a medical journal or a high-end health brand: serif display type (Instrument Serif) with DM Sans, lots of white space, thin rules, almost no glow. Very calm and trustworthy, but it departs from the dark, cyan look the MEND page established.</p>
+      <p class="motion">Motion: text revealed line by line through masks, images uncovered by sliding clips, gentle parallax. Quiet and confident.</p>
+    </div>
+  </div>
+
+</div>

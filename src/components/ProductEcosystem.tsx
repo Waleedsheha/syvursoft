@@ -2,7 +2,6 @@
 
 import { useEffect, useRef } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { animate, stagger } from "animejs";
 import { ArrowUpRight } from "lucide-react";
 import { products, type ProductId, type ProductInfo } from "@/lib/products";
@@ -145,15 +144,7 @@ export default function ProductEcosystem() {
                       </div>
                       <div
                         className={`flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl ring-1 ${style.icon} transition duration-300 group-hover:scale-110`}
-                      >
-                        <Image
-                          src="/images/syvursoft-logo.png"
-                          alt=""
-                          width={48}
-                          height={27}
-                          className="h-auto w-10 object-contain"
-                        />
-                      </div>
+                      />
                     </div>
                   </div>
 
@@ -168,13 +159,6 @@ export default function ProductEcosystem() {
                             key={item}
                             className="flex min-h-10 items-center gap-2 rounded-xl border border-slate-200 bg-slate-50/80 px-3 py-2 text-xs font-semibold text-slate-700 transition group-hover:border-sky-100 group-hover:bg-sky-50/60"
                           >
-                            <Image
-                              src="/images/syvursoft-logo.png"
-                              alt=""
-                              width={20}
-                              height={11}
-                              className="h-auto w-4 shrink-0 object-contain"
-                            />
                             <span>{item}</span>
                           </div>
                         ))}

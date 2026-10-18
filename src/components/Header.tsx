@@ -5,13 +5,11 @@ import Link from "next/link";
 import Image from "next/image";
 import { ChevronDown, Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
-import StaggeredMenu from "./StaggeredMenu";
-import LegacyProductsDialog from "./LegacyProductsDialog";
+import StaggeredMenu, { type NavLink } from "./StaggeredMenu";
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [legacyDialogOpen, setLegacyDialogOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -21,20 +19,25 @@ export default function Header() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const navLinks = [
+  const navLinks: NavLink[] = [
     { name: "Home", href: "/" },
-    {
-      name: "Legacy Products",
-      href: "#",
-      action: () => setLegacyDialogOpen(true)
-    },
     {
       name: "Products",
       href: "/#products",
       submenu: [
         { name: "RADex", href: "/radex" },
         { name: "MEND", href: "/mend" },
-      ]
+        {
+          name: "Atria",
+          href: "https://play.google.com/store/apps/details?id=com.syvursoft.atria",
+          external: true,
+        },
+        {
+          name: "ABGen",
+          href: "https://play.google.com/store/apps/details?id=com.syvursoft.abgen",
+          external: true,
+        },
+      ],
     },
     { name: "About Us", href: "/about" },
     { name: "Contact Us", href: "#contact" },
@@ -76,7 +79,7 @@ export default function Header() {
 
         <nav className="hidden items-center gap-1 md:flex">
           {navLinks.map((link) => {
-            if ("submenu" in link && link.submenu) {
+            if (link.submenu) {
               return (
                 <div key={link.name} className="group relative">
                   <Link
@@ -88,33 +91,22 @@ export default function Header() {
                     {link.name}
                     <ChevronDown className="h-4 w-4" aria-hidden="true" />
                   </Link>
-                  <div className="invisible absolute right-0 top-full min-w-44 translate-y-3 rounded-2xl border border-white/10 bg-[#070c17]/95 p-2 opacity-0 shadow-2xl shadow-black/30 backdrop-blur-xl transition group-hover:visible group-hover:translate-y-2 group-hover:opacity-100">
-                    {link.submenu.map((item) => (
-                      <Link
-                        key={item.name}
-                        href={item.href}
-                        className="block rounded-xl px-3 py-2 text-sm font-semibold text-slate-300 transition hover:bg-white/[0.08] hover:text-cyan-200"
-                      >
-                        {item.name}
-                      </Link>
-                    ))}
+                  <div className="invisible absolute right-0 top-full pt-2 opacity-0 transition group-hover:visible group-hover:opacity-100">
+                    <div className="min-w-44 translate-y-1 rounded-2xl border border-white/10 bg-[#070c17]/95 p-2 shadow-2xl shadow-black/30 backdrop-blur-xl transition group-hover:translate-y-0">
+                      {link.submenu.map((item) => (
+                        <Link
+                          key={item.name}
+                          href={item.href}
+                          target={item.external ? "_blank" : undefined}
+                          rel={item.external ? "noopener noreferrer" : undefined}
+                          className="block rounded-xl px-3 py-2 text-sm font-semibold text-slate-300 transition hover:bg-white/[0.08] hover:text-cyan-200"
+                        >
+                          {item.name}
+                        </Link>
+                      ))}
+                    </div>
                   </div>
                 </div>
-              );
-            }
-
-            if ("action" in link && link.action) {
-              return (
-                <button
-                  key={link.name}
-                  type="button"
-                  onClick={link.action}
-                  className={cn(
-                    "rounded-full px-4 py-2 text-xs font-semibold uppercase tracking-[0.14em] text-slate-300 transition hover:bg-white/[0.08] hover:text-cyan-200",
-                  )}
-                >
-                  {link.name}
-                </button>
               );
             }
 
@@ -151,13 +143,6 @@ export default function Header() {
         setOpen={setIsMobileMenuOpen}
         links={navLinks}
       />
-
-      {/* Legacy Products Dialog */}
-      <LegacyProductsDialog
-        open={legacyDialogOpen}
-        onOpenChange={setLegacyDialogOpen}
-      />
-
     </header>
   );
 }

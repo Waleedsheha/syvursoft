@@ -203,7 +203,7 @@ export default function PrivacyPolicy() {
 
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                         {/* Email Card */}
-                        <a href="mailto:Syvursoft@gmail.com" className="group relative bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border border-gray-100 overflow-hidden">
+                        <a href="mailto:waleedsheha@syvursoft.com" className="group relative bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border border-gray-100 overflow-hidden">
                             <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-orange-100 to-transparent rounded-bl-full opacity-60"></div>
                             <div className="relative">
                                 <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-orange-400 to-orange-500 flex items-center justify-center mb-6 shadow-lg shadow-orange-200 group-hover:scale-110 transition-transform duration-300">
@@ -213,7 +213,7 @@ export default function PrivacyPolicy() {
                                 </div>
                                 <h3 className="text-xl font-bold text-gray-900 mb-2">Email</h3>
                                 <p className="text-gray-500 text-sm mb-3">Send us a message anytime</p>
-                                <p className="text-orange-500 font-medium group-hover:text-orange-600 transition-colors">Syvursoft@gmail.com</p>
+                                <p className="text-orange-500 font-medium group-hover:text-orange-600 transition-colors">waleedsheha@syvursoft.com</p>
                             </div>
                         </a>
 

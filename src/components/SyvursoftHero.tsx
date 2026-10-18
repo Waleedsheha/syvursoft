@@ -72,21 +72,9 @@ export default function SyvursoftHero() {
 
       <div className="mx-auto grid w-full max-w-7xl items-center gap-14 lg:grid-cols-2">
         <div>
-          <div data-hero-copy className="flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.2em] text-cyan-400">
-            <Image
-              src="/images/syvursoft-logo.png"
-              alt=""
-              width={24}
-              height={14}
-              className="h-4 w-auto object-contain"
-              priority
-            />
-            Clinical software company
-          </div>
-
           <h1
             data-hero-copy
-            className="mt-6 max-w-4xl text-5xl font-bold leading-[0.94] tracking-[-0.045em] text-white sm:text-6xl lg:text-7xl"
+            className="max-w-4xl text-5xl font-bold leading-[0.94] tracking-[-0.045em] text-white sm:text-6xl lg:text-7xl"
           >
             Syvursoft builds the software backbone for medical facilities.
           </h1>
@@ -105,6 +93,21 @@ export default function SyvursoftHero() {
           >
             <Link
               href="#products"
+              onClick={(event) => {
+                // Next's router skips scrolling when the hash is already #products.
+                if (window.location.hash !== "#products") {
+                  return;
+                }
+
+                const productsSection = document.getElementById("products");
+
+                if (!productsSection) {
+                  throw new Error("Missing #products section");
+                }
+
+                event.preventDefault();
+                productsSection.scrollIntoView();
+              }}
               className="inline-flex min-h-14 items-center justify-center gap-2 rounded-full bg-gradient-to-r from-blue-600 via-sky-500 to-cyan-400 px-8 py-4 text-sm font-semibold text-white shadow-lg shadow-sky-950/25 transition hover:-translate-y-1 hover:shadow-cyan-500/20 focus:outline-none focus:ring-2 focus:ring-cyan-200"
             >
               Explore products

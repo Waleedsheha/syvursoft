@@ -1,5 +1,3 @@
-import Image from "next/image";
-
 const missionSections = [
   {
     title: "Why Syvursoft exists",
@@ -42,15 +40,7 @@ export default function CompanyMission() {
                 <div className="absolute inset-0 translate-x-[-120%] bg-[linear-gradient(120deg,transparent,rgba(14,165,233,0.08),transparent)] transition duration-700 group-hover:translate-x-[120%]" />
                 <div
                   className={`relative flex h-12 w-12 items-center justify-center rounded-2xl ring-1 transition duration-300 group-hover:scale-110 ${tone}`}
-                >
-                  <Image
-                    src="/images/syvursoft-logo.png"
-                    alt=""
-                    width={42}
-                    height={24}
-                    className="h-auto w-8 object-contain"
-                  />
-                </div>
+                />
                 <div className="relative">
                   <h3 className="text-xl font-semibold text-slate-950">
                     {title}
