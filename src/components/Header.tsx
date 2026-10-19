@@ -27,11 +27,7 @@ export default function Header() {
       submenu: [
         { name: "RADex", href: "/radex" },
         { name: "MEND", href: "/mend" },
-        {
-          name: "Atria",
-          href: "https://play.google.com/store/apps/details?id=com.syvursoft.atria",
-          external: true,
-        },
+        { name: "Atria", href: "https://atria.syvursoft.com" },
         {
           name: "ABGen",
           href: "https://play.google.com/store/apps/details?id=com.syvursoft.abgen",

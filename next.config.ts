@@ -18,6 +18,15 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  async redirects() {
+    return [
+      {
+        source: "/atria",
+        destination: "https://atria.syvursoft.com",
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default nextConfig;
