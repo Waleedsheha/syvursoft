@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useLocale, useTranslations } from "next-intl";
 import {
   Mail,
   MessageCircle,
@@ -9,12 +10,11 @@ import {
   Globe,
   Linkedin,
 } from "lucide-react";
+import { getPathname } from "@/i18n/navigation";
 
 const contactItems = [
   {
     id: "email",
-    title: "Email",
-    subtitle: "Send us a message anytime",
     value: "waleedsheha@syvursoft.com",
     href: "mailto:waleedsheha@syvursoft.com",
     icon: Mail,
@@ -22,8 +22,6 @@ const contactItems = [
   },
   {
     id: "whatsapp",
-    title: "WhatsApp",
-    subtitle: "Chat with us directly",
     value: "+20 121 164 4172",
     href: "https://wa.me/201211644172",
     icon: MessageCircle,
@@ -31,8 +29,6 @@ const contactItems = [
   },
   {
     id: "telegram",
-    title: "Telegram",
-    subtitle: "Fast & secure messaging",
     value: "+20 121 164 4172",
     href: "https://t.me/+201211644172",
     icon: Send,
@@ -40,8 +36,6 @@ const contactItems = [
   },
   {
     id: "facebook",
-    title: "Facebook",
-    subtitle: "Follow our updates",
     value: "SyvurSoft",
     href: "https://facebook.com/SyvurSoft",
     icon: Facebook,
@@ -49,8 +43,6 @@ const contactItems = [
   },
   {
     id: "website",
-    title: "Website",
-    subtitle: "Visit our main site",
     value: "Syvursoft.com",
     href: "/",
     icon: Globe,
@@ -58,8 +50,6 @@ const contactItems = [
   },
   {
     id: "linkedin",
-    title: "LinkedIn",
-    subtitle: "Connect professionally",
     value: "waleed-sheha",
     href: "https://linkedin.com/in/waleed-sheha",
     icon: Linkedin,
@@ -68,6 +58,9 @@ const contactItems = [
 ];
 
 export default function ContactGrid() {
+  const t = useTranslations("contact");
+  const locale = useLocale();
+
   return (
     <section
       className="relative overflow-hidden bg-[#f4f8fb] px-4 py-24 sm:px-6 lg:px-8"
@@ -83,7 +76,7 @@ export default function ContactGrid() {
             viewport={{ once: true }}
             className="mb-3 text-sm font-bold uppercase tracking-[0.24em] text-sky-700"
           >
-            Get in Touch
+            {t("label")}
           </motion.p>
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
@@ -92,7 +85,7 @@ export default function ContactGrid() {
             transition={{ delay: 0.1 }}
             className="text-4xl font-bold leading-[0.98] tracking-[-0.045em] text-slate-950 md:text-5xl"
           >
-            Contact Us
+            {t("heading")}
           </motion.h2>
           <motion.p
             initial={{ opacity: 0 }}
@@ -101,7 +94,7 @@ export default function ContactGrid() {
             transition={{ delay: 0.2 }}
             className="mx-auto mt-6 max-w-md text-base leading-7 text-slate-600"
           >
-            If you want a demo, please reach out through any of the channels below
+            {t("description")}
           </motion.p>
         </div>
 
@@ -109,7 +102,7 @@ export default function ContactGrid() {
           {contactItems.map((item, index) => (
             <motion.a
               key={item.id}
-              href={item.href}
+              href={item.id === "website" ? getPathname({ locale, href: item.href }) : item.href}
               target={item.id !== "website" ? "_blank" : undefined}
               rel={item.id !== "website" ? "noopener noreferrer" : undefined}
               initial={{ opacity: 0, y: 30 }}
@@ -132,11 +125,11 @@ export default function ContactGrid() {
                 </div>
 
                 <h3 className="mb-2 text-xl font-bold text-slate-950">
-                  {item.title}
+                  {t(`items.${item.id}.title`)}
                 </h3>
-                <p className="mb-3 text-sm text-slate-500">{item.subtitle}</p>
+                <p className="mb-3 text-sm text-slate-500">{t(`items.${item.id}.subtitle`)}</p>
                 <p className="font-semibold text-sky-600 transition-colors group-hover:text-cyan-600">
-                  {item.value}
+                  <span dir="ltr">{item.value}</span>
                 </p>
               </div>
             </motion.a>

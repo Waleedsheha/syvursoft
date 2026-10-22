@@ -3,12 +3,14 @@
 import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 import { GATE_COOKIE, GATE_PASSED } from "@/lib/gate";
 import { startWelcomeGate } from "@/lib/welcome-gate";
 
 /* The way into Syvursoft: the welcome lies frozen under ice, under snow; sweep the snow away and press Enter. Passing it
    sets this session's pass, fades the gate away over the home page, then refreshes so the server drops the gate. */
 export default function WelcomeGate() {
+  const t = useTranslations("welcomeGate");
   const router = useRouter();
   const rootRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -61,12 +63,12 @@ export default function WelcomeGate() {
             unoptimized
           />
           <h2 ref={titleRef} id="welcome-gate-title" className="welcome-gate__title">
-            <span>Welcome</span>
-            <span>to</span>
+            <span>{t("welcome")}</span>
+            <span>{t("to")}</span>
             <span>Syvursoft</span>
           </h2>
           <button ref={enterRef} type="button" className="welcome-gate__enter">
-            Enter
+            {t("enter")}
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
               <path d="M5 12h14" />
               <path d="m12 5 7 7-7 7" />

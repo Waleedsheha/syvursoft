@@ -1,13 +1,18 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import Link from "next/link";
+import NextLink from "next/link";
 import Image from "next/image";
+import { useLocale, useTranslations } from "next-intl";
 import { ChevronDown, Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
-import StaggeredMenu, { type NavLink } from "./StaggeredMenu";
+import { getPathname, Link, usePathname } from "@/i18n/navigation";
+import StaggeredMenu, { type LocaleSwitch, type NavLink } from "./StaggeredMenu";
 
 export default function Header() {
+  const t = useTranslations("header");
+  const locale = useLocale();
+  const pathname = usePathname();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -20,10 +25,10 @@ export default function Header() {
   }, []);
 
   const navLinks: NavLink[] = [
-    { name: "Home", href: "/" },
+    { name: t("home"), href: "/" },
     {
-      name: "Products",
-      href: "/#products",
+      name: t("products"),
+      href: { pathname: "/", hash: "products" },
       submenu: [
         { name: "RADex", href: "/radex" },
         { name: "MEND", href: "/mend" },
@@ -35,9 +40,17 @@ export default function Header() {
         },
       ],
     },
-    { name: "About Us", href: "/about" },
-    { name: "Contact Us", href: "#contact" },
+    { name: t("aboutUs"), href: "/about" },
+    { name: t("contactUs"), href: "#contact" },
   ];
+
+  /* The same page in the other language, named in that language. */
+  const otherLocale = locale === "ar" ? "en" : "ar";
+  const localeSwitch: LocaleSwitch = {
+    locale: otherLocale,
+    href: getPathname({ locale: otherLocale, href: pathname }),
+    label: t("language"),
+  };
 
   return (
     <header
@@ -87,7 +100,7 @@ export default function Header() {
                     {link.name}
                     <ChevronDown className="h-4 w-4" aria-hidden="true" />
                   </Link>
-                  <div className="invisible absolute right-0 top-full pt-2 opacity-0 transition group-hover:visible group-hover:opacity-100">
+                  <div className="invisible absolute end-0 top-full pt-2 opacity-0 transition group-hover:visible group-hover:opacity-100">
                     <div className="min-w-44 translate-y-1 rounded-2xl border border-white/10 bg-[#070c17]/95 p-2 shadow-2xl shadow-black/30 backdrop-blur-xl transition group-hover:translate-y-0">
                       {link.submenu.map((item) => (
                         <Link
@@ -118,12 +131,20 @@ export default function Header() {
               </Link>
             );
           })}
+          <NextLink
+            href={localeSwitch.href}
+            lang={localeSwitch.locale}
+            hrefLang={localeSwitch.locale}
+            className="rounded-full px-4 py-2 text-xs font-semibold uppercase tracking-[0.14em] text-slate-300 transition hover:bg-white/[0.08] hover:text-cyan-200"
+          >
+            {localeSwitch.label}
+          </NextLink>
         </nav>
 
         <button
           className="rounded-full border border-white/[0.12] bg-white/[0.06] p-3 text-white transition hover:border-cyan-200/30 hover:bg-white/10 md:hidden"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          aria-label="Open navigation menu"
+          aria-label={t("openMenu")}
         >
           {isMobileMenuOpen ? (
             <X className="h-5 w-5" />
@@ -138,6 +159,7 @@ export default function Header() {
         open={isMobileMenuOpen}
         setOpen={setIsMobileMenuOpen}
         links={navLinks}
+        localeSwitch={localeSwitch}
       />
     </header>
   );

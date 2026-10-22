@@ -276,3 +276,15 @@ html.gate-open body {
   width: 18px;
   height: 18px;
 }
+
+/* Arabic, on the Arabic pages and in the language switch, is set in IBM Plex Sans Arabic. Its letters join, so it is
+   never letter-spaced. */
+:lang(ar) {
+  font-family: var(--font-arabic);
+  letter-spacing: 0;
+}
+
+/* Arabic letters reach higher and lower than Latin ones, so headings set tight for English get room to breathe. */
+:lang(ar) :is(h1, h2, h3) {
+  line-height: 1.3;
+}

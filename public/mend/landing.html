@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{htmlLang}}" dir="{{htmlDir}}">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MEND | The New Standard in Healthcare Management</title>
-  <meta name="description" content="From a single clinic to a 1000-bed hospital. Mend covers every aspect of healthcare facility management — clinical, administrative, financial, HR, and maintenance — in one connected system." />
+  <title>{{metadata.mend.title}}</title>
+  <meta name="description" content="{{metadata.mend.description}}" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
@@ -1108,7 +1108,8 @@
     .stagger-6 { transition-delay: 0.3s; }
 
     /* Section glow */
-    .section-glow { position: relative; }
+    /* the glow is wider than a phone screen; clipping it sideways keeps the page from scrolling sideways */
+    .section-glow { position: relative; overflow-x: clip; }
     .section-glow::before {
       content: '';
       position: absolute;
@@ -1372,7 +1373,32 @@
       }
       [data-reveal] { opacity: 1; transform: none; }
     }
+
+    /* Arabic (RTL) overrides: applied only when the document language is Arabic. */
+    html[lang="ar"] {
+      --font-display: 'IBM Plex Sans Arabic';
+      --font-body: 'IBM Plex Sans Arabic';
+    }
+    html[lang="ar"] *,
+    html[lang="ar"] *::before,
+    html[lang="ar"] *::after {
+      letter-spacing: normal !important;
+      text-transform: none !important;
+    }
+    /* Arabic letters reach higher and lower than Latin ones, so the tight display headings get room to breathe. */
+    html[lang="ar"] .display,
+    html[lang="ar"] .display-hero {
+      line-height: 1.3;
+    }
+    /* the request-demo arrow points the way the page reads */
+    html[lang="ar"] .btn-primary svg { transform: scaleX(-1); }
+    html[lang="ar"] .feature-row.reverse { direction: ltr; }
+    html[lang="ar"] .feature-row.reverse > * { direction: rtl; }
+    @media (max-width: 639px) {
+      html[lang="ar"] .footer-copy { text-align: right; }
+    }
   </style>
+  {{localeHead}}
 </head>
 <body>
 
@@ -1383,20 +1409,20 @@
   <header class="header">
     <div class="header-inner">
       <div class="header-brand">
-        <a href="#" class="header-logo">MEND</a>
-        <button class="header-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Toggle navigation">
+        <a href="#" class="header-logo">{{mendPage.nav.logo}}</a>
+        <button class="header-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="{{mendPage.nav.toggle}}">
           <span class="header-toggle-bar"></span>
           <span class="header-toggle-bar"></span>
           <span class="header-toggle-bar"></span>
         </button>
       </div>
       <nav id="site-nav" class="header-nav">
-        <a href="/">Home</a>
-        <a href="#platform">Platform</a>
-        <a href="#doctors">Doctors</a>
-        <a href="#nurses">Nurses</a>
-        <a href="#admin">Admin</a>
-        <a href="#scale">Scale</a>
+        <a href="{{localeHome}}">{{mendPage.nav.home}}</a>
+        <a href="#platform">{{mendPage.nav.platform}}</a>
+        <a href="#doctors">{{mendPage.nav.doctors}}</a>
+        <a href="#nurses">{{mendPage.nav.nurses}}</a>
+        <a href="#admin">{{mendPage.nav.admin}}</a>
+        <a href="#scale">{{mendPage.nav.scale}}</a>
       </nav>
     </div>
   </header>
@@ -1410,41 +1436,41 @@
         <div>
           <div class="eyebrow-hero" style="display:flex;align-items:center;gap:0.5rem;">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-            Medical cloud System
+            {{mendPage.hero.eyebrow}}
           </div>
 
           <h1 class="display-hero hero-title" style="margin-top:1.5rem;">
-            A new way to<br>manage<br><span class="accent-gradient">healthcare.</span>
+            {{mendPage.hero.title}}<br>{{mendPage.hero.titleLine2}}<br><span class="accent-gradient">{{mendPage.hero.titleAccent}}</span>
           </h1>
 
           <p class="hero-sub">
-            From a single clinic to a 1000-bed hospital. Every workflow, every role, every department &mdash; one connected system that grows with you.
+            {{mendPage.hero.description}}
           </p>
 
           <div class="hero-ctas">
-            <a href="https://syvursoft.com/about#contact" class="btn-primary">
-              Request Demo
+            <a href="{{aboutContactUrl}}" class="btn-primary">
+              {{mendPage.hero.requestDemo}}
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
             </a>
-            <a href="#platform" class="btn-secondary">Explore Features</a>
+            <a href="#platform" class="btn-secondary">{{mendPage.hero.exploreFeatures}}</a>
           </div>
 
           <div class="hero-stats">
             <div>
-              <div class="hero-stat-value">1000+</div>
-              <div class="hero-stat-label">Beds capacity</div>
+              <div class="hero-stat-value">{{mendPage.hero.stats.0.value}}</div>
+              <div class="hero-stat-label">{{mendPage.hero.stats.0.label}}</div>
             </div>
             <div>
-              <div class="hero-stat-value">&lt; 60s</div>
-              <div class="hero-stat-label">Full audit</div>
+              <div class="hero-stat-value">{{mendPage.hero.stats.1.value}}</div>
+              <div class="hero-stat-label">{{mendPage.hero.stats.1.label}}</div>
             </div>
             <div>
-              <div class="hero-stat-value">24/7</div>
-              <div class="hero-stat-label">Always on</div>
+              <div class="hero-stat-value">{{mendPage.hero.stats.2.value}}</div>
+              <div class="hero-stat-label">{{mendPage.hero.stats.2.label}}</div>
             </div>
             <div>
-              <div class="hero-stat-value">0</div>
-              <div class="hero-stat-label">Paperwork</div>
+              <div class="hero-stat-value">{{mendPage.hero.stats.3.value}}</div>
+              <div class="hero-stat-label">{{mendPage.hero.stats.3.label}}</div>
             </div>
           </div>
         </div>
@@ -1457,7 +1483,7 @@
 
           <!-- Center mark -->
           <div class="hero-center-icon">
-            <div class="mend-core-mark">MEND</div>
+            <div class="mend-core-mark">{{mendPage.hero.coreMark}}</div>
           </div>
 
           <!-- Orbiting ecosystem pills -->
@@ -1466,7 +1492,7 @@
               <div class="ecosystem-pill-inner">
                 <div class="hero-pill">
                   <span class="dot dot-cyan"></span>
-                  ICU
+                  {{mendPage.hero.orbit.0}}
                 </div>
               </div>
             </div>
@@ -1477,7 +1503,7 @@
               <div class="ecosystem-pill-inner">
                 <div class="hero-pill">
                   <span class="dot dot-blue"></span>
-                  ER
+                  {{mendPage.hero.orbit.1}}
                 </div>
               </div>
             </div>
@@ -1488,7 +1514,7 @@
               <div class="ecosystem-pill-inner">
                 <div class="hero-pill">
                   <span class="dot dot-green"></span>
-                  Radiology
+                  {{mendPage.hero.orbit.2}}
                 </div>
               </div>
             </div>
@@ -1499,7 +1525,7 @@
               <div class="ecosystem-pill-inner">
                 <div class="hero-pill">
                   <span class="dot dot-cyan"></span>
-                  Lab
+                  {{mendPage.hero.orbit.3}}
                 </div>
               </div>
             </div>
@@ -1510,7 +1536,7 @@
               <div class="ecosystem-pill-inner">
                 <div class="hero-pill">
                   <span class="dot dot-blue"></span>
-                  Blood bank
+                  {{mendPage.hero.orbit.4}}
                 </div>
               </div>
             </div>
@@ -1521,7 +1547,7 @@
               <div class="ecosystem-pill-inner">
                 <div class="hero-pill">
                   <span class="dot dot-green"></span>
-                  Dialysis unit
+                  {{mendPage.hero.orbit.5}}
                 </div>
               </div>
             </div>
@@ -1532,7 +1558,7 @@
               <div class="ecosystem-pill-inner">
                 <div class="hero-pill">
                   <span class="dot dot-cyan"></span>
-                  Patient management
+                  {{mendPage.hero.orbit.6}}
                 </div>
               </div>
             </div>
@@ -1543,7 +1569,7 @@
               <div class="ecosystem-pill-inner">
                 <div class="hero-pill">
                   <span class="dot dot-blue"></span>
-                  HR
+                  {{mendPage.hero.orbit.7}}
                 </div>
               </div>
             </div>
@@ -1554,7 +1580,7 @@
               <div class="ecosystem-pill-inner">
                 <div class="hero-pill">
                   <span class="dot dot-green"></span>
-                  Finances
+                  {{mendPage.hero.orbit.8}}
                 </div>
               </div>
             </div>
@@ -1565,7 +1591,7 @@
               <div class="ecosystem-pill-inner">
                 <div class="hero-pill">
                   <span class="dot dot-cyan"></span>
-                  Maintenance
+                  {{mendPage.hero.orbit.9}}
                 </div>
               </div>
             </div>
@@ -1576,7 +1602,7 @@
               <div class="ecosystem-pill-inner">
                 <div class="hero-pill">
                   <span class="dot dot-blue"></span>
-                  Zero paperwork
+                  {{mendPage.hero.orbit.10}}
                 </div>
               </div>
             </div>
@@ -1587,7 +1613,7 @@
               <div class="ecosystem-pill-inner">
                 <div class="hero-pill">
                   <span class="dot dot-cyan"></span>
-                  Auto-filled forms
+                  {{mendPage.hero.orbit.11}}
                 </div>
               </div>
             </div>
@@ -1598,7 +1624,7 @@
               <div class="ecosystem-pill-inner">
                 <div class="hero-pill">
                   <span class="dot dot-blue"></span>
-                  Complete medical dashboard
+                  {{mendPage.hero.orbit.12}}
                 </div>
               </div>
             </div>
@@ -1609,7 +1635,7 @@
               <div class="ecosystem-pill-inner">
                 <div class="hero-pill">
                   <span class="dot dot-green"></span>
-                  Hospital structure
+                  {{mendPage.hero.orbit.13}}
                 </div>
               </div>
             </div>
@@ -1624,9 +1650,9 @@
   <section id="platform" class="section-light section-glow">
     <div class="container">
       <div class="section-header center" data-reveal>
-        <div class="eyebrow">Build your hospital inside Mend</div>
-        <h2 class="display section-title">Every aspect.<br>One system.</h2>
-        <p class="section-desc">Structural, functional, medical, administrative, financial, and even maintenance. Mend covers every dimension of your healthcare facility so nothing falls through the cracks.</p>
+        <div class="eyebrow">{{mendPage.platform.eyebrow}}</div>
+        <h2 class="display section-title">{{mendPage.platform.title}}<br>{{mendPage.platform.titleAccent}}</h2>
+        <p class="section-desc">{{mendPage.platform.description}}</p>
       </div>
 
       <div class="bento">
@@ -1634,48 +1660,48 @@
           <div class="card-icon card-icon-blue">
             <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M9 22v-4h6v4"/><path d="M8 6h.01M12 6h.01M16 6h.01M8 10h.01M12 10h.01M16 10h.01M8 14h.01M12 14h.01M16 14h.01"/></svg>
           </div>
-          <div class="card-title">Build your hospital</div>
-          <div class="card-copy">Design your facility's structure inside Mend &mdash; departments, floors, beds, equipment. See the entire workflow as it happens. From a small clinic with one room to a hospital with a thousand beds, the architecture adapts to you.</div>
+          <div class="card-title">{{mendPage.platform.cards.0.title}}</div>
+          <div class="card-copy">{{mendPage.platform.cards.0.text}}</div>
         </div>
 
         <div class="card stagger-2" data-reveal>
           <div class="card-icon card-icon-teal">
             <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M4.8 2.3A.3.3 0 1 0 5 2H4a2 2 0 0 0-2 2v5a6 6 0 0 0 6 6 6 6 0 0 0 6-6V4a2 2 0 0 0-2-2h-1a.2.2 0 1 0 .3.3"/><path d="M8 15v1a6 6 0 0 0 6 6 6 6 0 0 0 6-6v-4"/><circle cx="20" cy="10" r="2"/></svg>
           </div>
-          <div class="card-title">Clinical workflows</div>
-          <div class="card-copy">Doctors, nurses, and specialists work inside one connected clinical environment &mdash; records, orders, diagnostics, and treatment flow together.</div>
+          <div class="card-title">{{mendPage.platform.cards.1.title}}</div>
+          <div class="card-copy">{{mendPage.platform.cards.1.text}}</div>
         </div>
 
         <div class="card stagger-3" data-reveal>
           <div class="card-icon card-icon-green">
             <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
           </div>
-          <div class="card-title">Admin command</div>
-          <div class="card-copy">The admin is always on the scene. Finance, HR, procurement, inventory, and operations &mdash; all visible from one control layer.</div>
+          <div class="card-title">{{mendPage.platform.cards.2.title}}</div>
+          <div class="card-copy">{{mendPage.platform.cards.2.text}}</div>
         </div>
 
         <div class="card stagger-4" data-reveal>
           <div class="card-icon card-icon-cyan">
             <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg>
           </div>
-          <div class="card-title">AI integration</div>
-          <div class="card-copy">Trained by doctors and fine-tuned for differential diagnosis. AI that understands medicine, not just text.</div>
+          <div class="card-title">{{mendPage.platform.cards.3.title}}</div>
+          <div class="card-copy">{{mendPage.platform.cards.3.text}}</div>
         </div>
 
         <div class="card stagger-5" data-reveal>
           <div class="card-icon card-icon-blue">
             <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
           </div>
-          <div class="card-title">Maintenance covered</div>
-          <div class="card-copy">Equipment tracking, facility maintenance schedules, and service requests. The operational backbone that keeps everything running.</div>
+          <div class="card-title">{{mendPage.platform.cards.4.title}}</div>
+          <div class="card-copy">{{mendPage.platform.cards.4.text}}</div>
         </div>
 
         <div class="card stagger-6" data-reveal>
           <div class="card-icon card-icon-teal">
             <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
           </div>
-          <div class="card-title">Financial system</div>
-          <div class="card-copy">Comprehensive financial management &mdash; billing, invoicing, insurance, and reporting. Everything calculated, nothing missed.</div>
+          <div class="card-title">{{mendPage.platform.cards.5.title}}</div>
+          <div class="card-copy">{{mendPage.platform.cards.5.text}}</div>
         </div>
       </div>
     </div>
@@ -1686,21 +1712,21 @@
     <div class="container">
       <div class="feature-row" data-reveal>
         <div>
-          <div class="eyebrow">Audit in real time</div>
-          <h2 class="display section-title">Audit your entire hospital<br><span class="accent-gradient">in one minute.</span></h2>
-          <p class="section-desc">Every person inside the hospital carries a part of the system. When everyone contributes, full visibility becomes instant &mdash; not a quarterly exercise.</p>
+          <div class="eyebrow">{{mendPage.audit.eyebrow}}</div>
+          <h2 class="display section-title">{{mendPage.audit.title}}<br><span class="accent-gradient">{{mendPage.audit.titleAccent}}</span></h2>
+          <p class="section-desc">{{mendPage.audit.description}}</p>
 
           <div class="scale-bar" data-reveal>
-            <span class="scale-label">Start</span>
+            <span class="scale-label">{{mendPage.audit.scaleStart}}</span>
             <div class="scale-track"><div class="scale-fill"></div></div>
-            <span class="scale-label">Complete audit &lt; 60s</span>
+            <span class="scale-label">{{mendPage.audit.scaleEnd}}</span>
           </div>
         </div>
 
         <div>
           <div class="highlight-card">
-            <div class="highlight-value accent-gradient">&lt; 60s</div>
-            <div class="highlight-label">Full hospital audit &mdash; because everyone inside the system is carrying the data in real time</div>
+            <div class="highlight-value accent-gradient">{{mendPage.audit.highlightValue}}</div>
+            <div class="highlight-label">{{mendPage.audit.highlightLabel}}</div>
           </div>
         </div>
       </div>
@@ -1712,30 +1738,30 @@
     <div class="container">
       <div class="feature-row reverse">
         <div data-reveal>
-          <div class="eyebrow">For doctors</div>
-          <h2 class="display section-title">Type the first letter.<br><span class="accent-gradient">Mend does the rest.</span></h2>
-          <p class="section-desc">All the help you need, exactly where you need it. The system anticipates, suggests, and completes so you can focus on the patient, not the keyboard.</p>
+          <div class="eyebrow">{{mendPage.doctors.eyebrow}}</div>
+          <h2 class="display section-title">{{mendPage.doctors.title}}<br><span class="accent-gradient">{{mendPage.doctors.titleAccent}}</span></h2>
+          <p class="section-desc">{{mendPage.doctors.description}}</p>
 
           <ul class="feature-list" style="margin-top:2rem;">
             <li data-reveal class="stagger-1">
               <div class="feature-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
               <div>
-                <strong style="color:var(--ink)">AI differential diagnosis</strong>
-                <div class="card-copy">Trained by physicians and fine-tuned for clinical reasoning. Real medical intelligence, not generic text generation.</div>
+                <strong style="color:var(--ink)">{{mendPage.doctors.items.0.title}}</strong>
+                <div class="card-copy">{{mendPage.doctors.items.0.text}}</div>
               </div>
             </li>
             <li data-reveal class="stagger-2">
               <div class="feature-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
               <div>
-                <strong style="color:var(--ink)">Auto-completion from workflow</strong>
-                <div class="card-copy">Patient files auto-complete from doctor and nurse workflows. What you document once flows everywhere it needs to go &mdash; no double typing.</div>
+                <strong style="color:var(--ink)">{{mendPage.doctors.items.1.title}}</strong>
+                <div class="card-copy">{{mendPage.doctors.items.1.text}}</div>
               </div>
             </li>
             <li data-reveal class="stagger-3">
               <div class="feature-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
               <div>
-                <strong style="color:var(--ink)">Smart prescriptions &amp; orders</strong>
-                <div class="card-copy">Type the first letter and the system surfaces what you need &mdash; medications, lab tests, imaging orders &mdash; with dosing, interactions, and context.</div>
+                <strong style="color:var(--ink)">{{mendPage.doctors.items.2.title}}</strong>
+                <div class="card-copy">{{mendPage.doctors.items.2.text}}</div>
               </div>
             </li>
           </ul>
@@ -1747,22 +1773,22 @@
               <div class="card-icon card-icon-teal">
                 <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3z"/></svg>
               </div>
-              <div class="card-title">AI-powered</div>
-              <div class="card-copy">Differential diagnosis trained by real doctors</div>
+              <div class="card-title">{{mendPage.doctors.cards.0.title}}</div>
+              <div class="card-copy">{{mendPage.doctors.cards.0.text}}</div>
             </div>
             <div class="card">
               <div class="card-icon card-icon-blue">
                 <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><path d="m9 15 2 2 4-4"/></svg>
               </div>
-              <div class="card-title">Zero re-typing</div>
-              <div class="card-copy">Document once, it flows everywhere</div>
+              <div class="card-title">{{mendPage.doctors.cards.1.title}}</div>
+              <div class="card-copy">{{mendPage.doctors.cards.1.text}}</div>
             </div>
             <div class="card" style="grid-column: span 2;">
               <div class="card-icon card-icon-green">
                 <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
               </div>
-              <div class="card-title">Complete patient context</div>
-              <div class="card-copy">Records, interactions, AI support, and full medical history &mdash; on one screen so attention stays on treatment.</div>
+              <div class="card-title">{{mendPage.doctors.cards.2.title}}</div>
+              <div class="card-copy">{{mendPage.doctors.cards.2.text}}</div>
             </div>
           </div>
         </div>
@@ -1774,9 +1800,9 @@
   <section id="nurses" class="section-alt">
     <div class="container">
       <div class="section-header" data-reveal>
-        <div class="eyebrow">For nurses</div>
-        <h2 class="display section-title">Tap a button.<br><span class="accent-gradient">The request is sent.</span></h2>
-        <p class="section-desc">Vital sign reminders, medication schedules, doctor order tracking &mdash; Mend handles the cognitive load so nurses can focus on the patient at the bedside.</p>
+        <div class="eyebrow">{{mendPage.nurses.eyebrow}}</div>
+        <h2 class="display section-title">{{mendPage.nurses.title}}<br><span class="accent-gradient">{{mendPage.nurses.titleAccent}}</span></h2>
+        <p class="section-desc">{{mendPage.nurses.description}}</p>
       </div>
 
       <div class="grid-3">
@@ -1784,22 +1810,22 @@
           <div class="card-icon card-icon-teal">
             <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M19.5 12.572l-7.5 7.428-7.5-7.428A5 5 0 1 1 12 6.006a5 5 0 1 1 7.5 6.572"/><path d="M5 12h3l1.5-3 3 6 1.5-3h3"/></svg>
           </div>
-          <div class="card-title">Vital sign reminders</div>
-          <div class="card-copy">Never miss a reading. Mend reminds you when vitals are due and logs them directly into the patient record.</div>
+          <div class="card-title">{{mendPage.nurses.cards.0.title}}</div>
+          <div class="card-copy">{{mendPage.nurses.cards.0.text}}</div>
         </div>
         <div class="card stagger-2" data-reveal>
           <div class="card-icon card-icon-blue">
             <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
           </div>
-          <div class="card-title">Medication tracking</div>
-          <div class="card-copy">Medication schedules, dosing reminders, and doctor orders &mdash; all tracked and visible. No need to worry, leave it to Mend.</div>
+          <div class="card-title">{{mendPage.nurses.cards.1.title}}</div>
+          <div class="card-copy">{{mendPage.nurses.cards.1.text}}</div>
         </div>
         <div class="card stagger-3" data-reveal>
           <div class="card-icon card-icon-green">
             <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
           </div>
-          <div class="card-title">One-tap requests</div>
-          <div class="card-copy">Send requests, flag concerns, and coordinate with the care team with a single tap. No forms, no delays.</div>
+          <div class="card-title">{{mendPage.nurses.cards.2.title}}</div>
+          <div class="card-copy">{{mendPage.nurses.cards.2.text}}</div>
         </div>
       </div>
     </div>
@@ -1810,30 +1836,30 @@
     <div class="container">
       <div class="feature-row" data-reveal>
         <div>
-          <div class="eyebrow">Zero paperwork</div>
-          <h2 class="display section-title">Every form is<br><span class="accent-gradient">auto-filled.</span></h2>
-          <p class="section-desc">No more routine filing systems. Every paper, every form, every report is auto-populated from the workflow and ready for review. You just confirm.</p>
+          <div class="eyebrow">{{mendPage.paperless.eyebrow}}</div>
+          <h2 class="display section-title">{{mendPage.paperless.title}}<br><span class="accent-gradient">{{mendPage.paperless.titleAccent}}</span></h2>
+          <p class="section-desc">{{mendPage.paperless.description}}</p>
 
           <ul class="feature-list" style="margin-top:2rem;">
             <li data-reveal class="stagger-1">
               <div class="feature-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
               <div>
-                <strong style="color:var(--ink)">Auto-completion across roles</strong>
-                <div class="card-copy">When a doctor documents, the nurse sees it. When a nurse records vitals, it fills the patient file. No one types the same thing twice.</div>
+                <strong style="color:var(--ink)">{{mendPage.paperless.items.0.title}}</strong>
+                <div class="card-copy">{{mendPage.paperless.items.0.text}}</div>
               </div>
             </li>
             <li data-reveal class="stagger-2">
               <div class="feature-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
               <div>
-                <strong style="color:var(--ink)">Ready for review, not for filling</strong>
-                <div class="card-copy">Every document arrives pre-filled and formatted. Your job is to review and approve, not to create from scratch.</div>
+                <strong style="color:var(--ink)">{{mendPage.paperless.items.1.title}}</strong>
+                <div class="card-copy">{{mendPage.paperless.items.1.text}}</div>
               </div>
             </li>
             <li data-reveal class="stagger-3">
               <div class="feature-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
               <div>
-                <strong style="color:var(--ink)">Instant audit trail</strong>
-                <div class="card-copy">Every action is logged, timestamped, and traceable. Full compliance without manual documentation effort.</div>
+                <strong style="color:var(--ink)">{{mendPage.paperless.items.2.title}}</strong>
+                <div class="card-copy">{{mendPage.paperless.items.2.text}}</div>
               </div>
             </li>
           </ul>
@@ -1841,8 +1867,8 @@
 
         <div data-reveal>
           <div class="highlight-card">
-            <div class="highlight-value accent-gradient">0</div>
-            <div class="highlight-label">Forms filled by hand. Every document auto-populated from the clinical workflow.</div>
+            <div class="highlight-value accent-gradient">{{mendPage.paperless.highlight.value}}</div>
+            <div class="highlight-label">{{mendPage.paperless.highlight.label}}</div>
           </div>
         </div>
       </div>
@@ -1853,9 +1879,9 @@
   <section class="section-alt section-glow">
     <div class="container">
       <div class="section-header center" data-reveal>
-        <div class="eyebrow">Lab &amp; imaging</div>
-        <h2 class="display section-title">Complete lab. Complete PACS.<br><span class="accent-gradient">One viewer.</span></h2>
-        <p class="section-desc">A full laboratory information system and a complete PACS with the Mend viewer &mdash; view imaging exactly as it appears on the machine, directly inside the platform.</p>
+        <div class="eyebrow">{{mendPage.labImaging.eyebrow}}</div>
+        <h2 class="display section-title">{{mendPage.labImaging.title}}<br><span class="accent-gradient">{{mendPage.labImaging.titleAccent}}</span></h2>
+        <p class="section-desc">{{mendPage.labImaging.description}}</p>
       </div>
 
       <div class="grid-2">
@@ -1863,15 +1889,15 @@
           <div class="card-icon card-icon-teal">
             <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M4 7V4a2 2 0 0 1 2-2h8l6 6v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-5"/><path d="M4 12h10"/><path d="M10 16l4-4-4-4"/></svg>
           </div>
-          <div class="card-title">Complete laboratory system</div>
-          <div class="card-copy">Order tests, track samples, receive results, and integrate findings into the patient record. A full LIS inside Mend &mdash; no external system needed.</div>
+          <div class="card-title">{{mendPage.labImaging.cards.0.title}}</div>
+          <div class="card-copy">{{mendPage.labImaging.cards.0.text}}</div>
         </div>
         <div class="card stagger-2" data-reveal>
           <div class="card-icon card-icon-blue">
             <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/><circle cx="12" cy="10" r="3"/></svg>
           </div>
-          <div class="card-title">PACS with Mend viewer</div>
-          <div class="card-copy">View X-rays, CT scans, MRIs, and ultrasounds exactly as they appear on the imaging machine. No separate PACS software &mdash; it's all inside Mend.</div>
+          <div class="card-title">{{mendPage.labImaging.cards.1.title}}</div>
+          <div class="card-copy">{{mendPage.labImaging.cards.1.text}}</div>
         </div>
       </div>
     </div>
@@ -1881,9 +1907,9 @@
   <section id="admin" class="section-light">
     <div class="container">
       <div class="section-header" data-reveal>
-        <div class="eyebrow">Admin &amp; finance</div>
-        <h2 class="display section-title">The admin is always<br><span class="accent-gradient">on the scene.</span></h2>
-        <p class="section-desc">HR, payroll, sign-in, financial reporting, and employee self-service. Mend gives administrators complete operational visibility without leaving the platform.</p>
+        <div class="eyebrow">{{mendPage.admin.eyebrow}}</div>
+        <h2 class="display section-title">{{mendPage.admin.title}}<br><span class="accent-gradient">{{mendPage.admin.titleAccent}}</span></h2>
+        <p class="section-desc">{{mendPage.admin.description}}</p>
       </div>
 
       <div class="grid-4">
@@ -1891,29 +1917,29 @@
           <div class="card-icon card-icon-blue">
             <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
           </div>
-          <div class="card-title">HR system</div>
-          <div class="card-copy">Complete human resources management with self-serving employee portal.</div>
+          <div class="card-title">{{mendPage.admin.cards.0.title}}</div>
+          <div class="card-copy">{{mendPage.admin.cards.0.text}}</div>
         </div>
         <div class="card stagger-2" data-reveal>
           <div class="card-icon card-icon-green">
             <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
           </div>
-          <div class="card-title">One-button payroll</div>
-          <div class="card-copy">Process the entire payroll with a single action. Salaries, deductions, and disbursements &mdash; calculated and ready.</div>
+          <div class="card-title">{{mendPage.admin.cards.1.title}}</div>
+          <div class="card-copy">{{mendPage.admin.cards.1.text}}</div>
         </div>
         <div class="card stagger-3" data-reveal>
           <div class="card-icon card-icon-teal">
             <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
           </div>
-          <div class="card-title">Smart sign-in</div>
-          <div class="card-copy">Innovative ways for signing in and out. Attendance tracked without friction.</div>
+          <div class="card-title">{{mendPage.admin.cards.2.title}}</div>
+          <div class="card-copy">{{mendPage.admin.cards.2.text}}</div>
         </div>
         <div class="card stagger-4" data-reveal>
           <div class="card-icon card-icon-cyan">
             <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"/><path d="M22 12A10 10 0 0 0 12 2v10z"/></svg>
           </div>
-          <div class="card-title">Financial reporting</div>
-          <div class="card-copy">Comprehensive financial system. Every transaction tracked, every report auto-generated.</div>
+          <div class="card-title">{{mendPage.admin.cards.3.title}}</div>
+          <div class="card-copy">{{mendPage.admin.cards.3.text}}</div>
         </div>
       </div>
     </div>
@@ -1924,29 +1950,29 @@
     <div class="container">
       <div class="feature-row" data-reveal>
         <div>
-          <div class="eyebrow">Scale with confidence</div>
-          <h2 class="display section-title">Mend grows with<br><span class="accent-gradient">your business.</span></h2>
-          <p class="section-desc">Start with a single clinic. Expand to multiple departments. Scale to a full hospital. Mend adapts &mdash; not just ICU, it can be made to match any department design. Everything calculated, everything connected.</p>
+          <div class="eyebrow">{{mendPage.scale.eyebrow}}</div>
+          <h2 class="display section-title">{{mendPage.scale.title}}<br><span class="accent-gradient">{{mendPage.scale.titleAccent}}</span></h2>
+          <p class="section-desc">{{mendPage.scale.description}}</p>
 
           <div class="scale-bar" data-reveal>
-            <span class="scale-label">Clinic</span>
+            <span class="scale-label">{{mendPage.scale.scaleStart}}</span>
             <div class="scale-track"><div class="scale-fill"></div></div>
-            <span class="scale-label">1000+ beds</span>
+            <span class="scale-label">{{mendPage.scale.scaleEnd}}</span>
           </div>
 
           <ul class="feature-list" style="margin-top:2.5rem;">
             <li data-reveal class="stagger-1">
               <div class="feature-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
               <div>
-                <strong style="color:var(--ink)">Any department design</strong>
-                <div class="card-copy">Not just ICU. Mend adapts to ER, OR, wards, outpatient clinics, pharmacy, radiology &mdash; any configuration you need.</div>
+                <strong style="color:var(--ink)">{{mendPage.scale.items.0.title}}</strong>
+                <div class="card-copy">{{mendPage.scale.items.0.text}}</div>
               </div>
             </li>
             <li data-reveal class="stagger-2">
               <div class="feature-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
               <div>
-                <strong style="color:var(--ink)">Everything calculated</strong>
-                <div class="card-copy">Capacity planning, resource allocation, staffing ratios &mdash; Mend computes what you need as you grow.</div>
+                <strong style="color:var(--ink)">{{mendPage.scale.items.1.title}}</strong>
+                <div class="card-copy">{{mendPage.scale.items.1.text}}</div>
               </div>
             </li>
           </ul>
@@ -1955,12 +1981,12 @@
         <div data-reveal>
           <div class="grid-2" style="gap:1rem;">
             <div class="highlight-card">
-              <div class="highlight-value accent-gradient">1</div>
-              <div class="highlight-label">Clinic to start</div>
+              <div class="highlight-value accent-gradient">{{mendPage.scale.highlights.0.value}}</div>
+              <div class="highlight-label">{{mendPage.scale.highlights.0.label}}</div>
             </div>
             <div class="highlight-card">
-              <div class="highlight-value accent-gradient">1000+</div>
-              <div class="highlight-label">Beds at scale</div>
+              <div class="highlight-value accent-gradient">{{mendPage.scale.highlights.1.value}}</div>
+              <div class="highlight-label">{{mendPage.scale.highlights.1.label}}</div>
             </div>
           </div>
         </div>
@@ -1981,18 +2007,18 @@
 
         <div class="eyebrow-hero" style="justify-content:center;display:flex;align-items:center;gap:0.5rem;">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-          Ready to transform your hospital?
+          {{mendPage.cta.eyebrow}}
         </div>
         <h2 class="display-hero cta-title" style="margin-top:1rem;">
-          Start with Mend.<br><span class="accent-gradient">Start today.</span>
+          {{mendPage.cta.title}}<br><span class="accent-gradient">{{mendPage.cta.titleAccent}}</span>
         </h2>
-        <p class="cta-desc">One platform. Every department. Zero paperwork. From your first patient to your thousandth bed.</p>
+        <p class="cta-desc">{{mendPage.cta.description}}</p>
         <div class="cta-buttons">
-          <a href="https://syvursoft.com/about#contact" class="btn-primary">
-            Request Demo
+          <a href="{{aboutContactUrl}}" class="btn-primary">
+            {{mendPage.cta.requestDemo}}
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
           </a>
-          <a href="#platform" class="btn-secondary">Explore Features</a>
+          <a href="#platform" class="btn-secondary">{{mendPage.cta.exploreFeatures}}</a>
         </div>
       </div>
     </div>
@@ -2002,8 +2028,8 @@
   <footer class="footer">
     <div class="container">
       <div class="footer-inner">
-        <div class="footer-logo">MEND</div>
-        <div class="footer-copy">Copyright &copy; 2025 MEND Healthcare Management System. All rights reserved to Syvursoft and Dr Waleed Sheha, Dr Adel Kotb.</div>
+        <div class="footer-logo">{{mendPage.footer.logo}}</div>
+        <div class="footer-copy">{{mendPage.footer.copyright}}</div>
       </div>
     </div>
   </footer>

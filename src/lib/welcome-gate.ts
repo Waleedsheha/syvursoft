@@ -180,7 +180,8 @@ export function startWelcomeGate(parts: GateParts, onPass: () => void): () => vo
   }
 
   /* the welcome, painted where the page lays it out: the logo, the lines, the button as a slab of frosted ice. It is
-     painted in the page's own Inter, so it waits for that font and will not paint in any other. */
+     painted in the page's own font (Inter, or IBM Plex Sans Arabic on the Arabic pages), so it waits for that font and
+     will not paint in any other. */
   const paper = document.createElement("canvas"), pen = paper.getContext("2d");
   if (!pen) throw new Error("Welcome gate: could not get a 2D canvas to paint the welcome.");
   const family = getComputedStyle(title).fontFamily.split(",")[0].trim();
@@ -200,8 +201,9 @@ export function startWelcomeGate(parts: GateParts, onPass: () => void): () => vo
     pen.shadowColor = "rgba(56,189,248,.45)"; pen.shadowBlur = 22 * s;
     pen.drawImage(logo, l.x, l.y, l.w, l.h);
 
-    const fs = parseFloat(getComputedStyle(title).fontSize);
-    pen.font = `800 ${fs}px ${family}`; pen.letterSpacing = `${-0.045 * fs}px`;
+    /* the lines keep the page's own letter spacing: tight in English, none in Arabic, whose letters join */
+    const titleStyle = getComputedStyle(title), fs = parseFloat(titleStyle.fontSize);
+    pen.font = `800 ${fs}px ${family}`; pen.letterSpacing = titleStyle.letterSpacing === "normal" ? "0px" : titleStyle.letterSpacing;
     pen.textAlign = "center"; pen.textBaseline = "alphabetic";
     pen.fillStyle = "rgba(226,244,255,.95)"; pen.shadowColor = "rgba(125,211,252,.4)"; pen.shadowBlur = 26 * s;
     for (const line of Array.from(title.children)) {
@@ -234,10 +236,12 @@ export function startWelcomeGate(parts: GateParts, onPass: () => void): () => vo
     const arrow = enter.querySelector("svg");
     if (!arrow) throw new Error("Welcome gate: the Enter button has no arrow to paint.");
     const a = box(arrow.getBoundingClientRect()), k = a.w / 24;
+    /* the arrow points the way the page reads: right in English, left in Arabic */
+    const ax = getComputedStyle(enter).direction === "rtl" ? (u: number) => a.x + (24 - u) * k : (u: number) => a.x + u * k;
     pen.strokeStyle = "#f4fbff"; pen.lineWidth = 2 * k; pen.lineCap = "round"; pen.lineJoin = "round";
     pen.beginPath();
-    pen.moveTo(a.x + 5 * k, a.y + 12 * k); pen.lineTo(a.x + 19 * k, a.y + 12 * k);
-    pen.moveTo(a.x + 12 * k, a.y + 5 * k); pen.lineTo(a.x + 19 * k, a.y + 12 * k); pen.lineTo(a.x + 12 * k, a.y + 19 * k);
+    pen.moveTo(ax(5), a.y + 12 * k); pen.lineTo(ax(19), a.y + 12 * k);
+    pen.moveTo(ax(12), a.y + 5 * k); pen.lineTo(ax(19), a.y + 12 * k); pen.lineTo(ax(12), a.y + 19 * k);
     pen.stroke();
 
     g.bindTexture(g.TEXTURE_2D, need(content));

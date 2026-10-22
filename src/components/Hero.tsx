@@ -2,9 +2,11 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useTranslations } from "next-intl";
 import { ArrowRight, X } from "lucide-react";
 
 export default function Hero() {
+    const t = useTranslations("radex.hero");
     const [showDialog, setShowDialog] = useState(false);
 
     const handleBookDemo = () => {
@@ -24,7 +26,7 @@ export default function Hero() {
     return (
         <section className="relative h-[90vh] min-h-[600px] w-full overflow-hidden flex items-center justify-center bg-[#0a192f] text-white">
             {/* Background Graphic/Overlay */}
-            <div className="absolute inset-0 bg-gradient-to-r from-[#0a192f]/90 to-[#0a192f]/40 z-10" />
+            <div className="absolute inset-0 bg-gradient-to-r rtl:bg-gradient-to-l from-[#0a192f]/90 to-[#0a192f]/40 z-10" />
             <div
                 className="absolute inset-0 z-0 opacity-50 bg-cover bg-center"
                 style={{ backgroundImage: 'url("/images/mri_hero.png")' }}
@@ -38,21 +40,23 @@ export default function Hero() {
                         transition={{ duration: 0.8 }}
                     >
                         <h1 className="text-5xl md:text-7xl font-bold leading-tight mb-6">
-                            Empowering <span className="text-[#f97316]">Healthcare</span> with Innovation
+                            {t.rich("title", {
+                                accent: (chunks) => <span className="text-[#f97316]">{chunks}</span>
+                            })}
                         </h1>
                         <p className="text-xl md:text-2xl text-gray-200 mb-8 font-light">
-                            Advanced Hospital Management Systems & Radiology Information Solutions designed for modern medical facilities.
+                            {t("description")}
                         </p>
 
                         <div className="flex flex-wrap gap-4">
                             <div className="bg-white/10 backdrop-blur-sm border border-white/20 px-8 py-4 rounded-full font-semibold text-lg">
-                                RADex is just the beginning
+                                {t("badge")}
                             </div>
                             <button
                                 onClick={handleBookDemo}
                                 className="bg-[#f97316] hover:bg-[#ea580c] text-white px-8 py-4 rounded-full font-semibold text-lg transition-all flex items-center gap-2 shadow-lg shadow-orange-900/20"
                             >
-                                Book a Demo <ArrowRight className="w-5 h-5" />
+                                {t("bookDemo")} <ArrowRight className="w-5 h-5 rtl:-scale-x-100" />
                             </button>
                         </div>
                     </motion.div>
@@ -87,7 +91,7 @@ export default function Hero() {
                                 {/* Close button */}
                                 <button
                                     onClick={handleNotOk}
-                                    className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition-colors"
+                                    className="absolute top-4 end-4 text-gray-400 hover:text-gray-600 transition-colors"
                                 >
                                     <X className="w-5 h-5" />
                                 </button>
@@ -95,12 +99,12 @@ export default function Hero() {
                                 {/* Content */}
                                 <div className="text-center">
                                     <div className="w-16 h-16 bg-gradient-to-br from-orange-400 to-orange-500 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg shadow-orange-200">
-                                        <ArrowRight className="w-8 h-8 text-white" />
+                                        <ArrowRight className="w-8 h-8 text-white rtl:-scale-x-100" />
                                     </div>
 
-                                    <h3 className="text-2xl font-bold text-gray-900 mb-3">Book a Demo</h3>
+                                    <h3 className="text-2xl font-bold text-gray-900 mb-3">{t("dialog.title")}</h3>
                                     <p className="text-gray-600 mb-8">
-                                        You will be transferred to Contact to choose your preferred method of communication.
+                                        {t("dialog.text")}
                                     </p>
 
                                     {/* Buttons */}
@@ -109,13 +113,13 @@ export default function Hero() {
                                             onClick={handleNotOk}
                                             className="flex-1 px-6 py-3 rounded-full border-2 border-gray-200 text-gray-600 font-semibold hover:bg-gray-50 transition-all"
                                         >
-                                            Not OK
+                                            {t("dialog.decline")}
                                         </button>
                                         <button
                                             onClick={handleOk}
                                             className="flex-1 px-6 py-3 rounded-full bg-gradient-to-r from-orange-500 to-orange-600 text-white font-semibold hover:shadow-lg hover:shadow-orange-200 transition-all"
                                         >
-                                            OK
+                                            {t("dialog.confirm")}
                                         </button>
                                     </div>
                                 </div>

@@ -1,0 +1,1060 @@
+{
+  "metadata": {
+    "root": {
+      "title": "Syvursoft - Medical Facility Software, RADex, MEND, and ADAM",
+      "description": "Syvursoft builds medical software for radiology, complete facility management, and clinical intelligence through RADex, MEND, and ADAM."
+    },
+    "mend": {
+      "title": "MEND | The New Standard in Healthcare Management",
+      "description": "From a single clinic to a 1000-bed hospital. Mend covers every aspect of healthcare facility management — clinical, administrative, financial, HR, and maintenance — in one connected system."
+    }
+  },
+  "header": {
+    "home": "Home",
+    "products": "Products",
+    "aboutUs": "About Us",
+    "contactUs": "Contact Us",
+    "openMenu": "Open navigation menu",
+    "closeMenu": "Close",
+    "language": "العربية"
+  },
+  "footer": {
+    "aboutUs": "About Us",
+    "privacyPolicy": "Privacy Policy",
+    "termsOfService": "Terms of Service",
+    "copyright": "© {year} Syvursoft. All rights reserved."
+  },
+  "welcomeGate": {
+    "welcome": "Welcome",
+    "to": "to",
+    "enter": "Enter"
+  },
+  "home": {
+    "hero": {
+      "title": "Syvursoft builds the software backbone for medical facilities.",
+      "description": "RADex, MEND, and ADAM connect imaging, facility operations, and clinical intelligence into one practical product ecosystem.",
+      "exploreProducts": "Explore products",
+      "aboutSyvursoft": "About Syvursoft",
+      "stats": [
+        "Made by doctors",
+        "Who lived the whole experience",
+        "Who worked at the center of events",
+        "Who know what the system needs"
+      ],
+      "orbit": {
+        "radex": "Imaging workflow",
+        "mend": "Facility operations",
+        "adam": "Clinical intelligence"
+      },
+      "logoAlt": "Syvursoft logo"
+    },
+    "mission": {
+      "label": "Mission",
+      "heading": "Software for the way healthcare actually works.",
+      "sections": [
+        {
+          "title": "Why Syvursoft exists",
+          "text": "Syvursoft was started to make medical software that feels practical at the point of care: fast enough for pressure, structured enough for operations, and clear enough to improve decisions."
+        },
+        {
+          "title": "Clinical credibility",
+          "text": "Founded by an emergency and critical care physician, our products are shaped by real clinical environments where complex data, limited time, and patient safety all meet."
+        },
+        {
+          "title": "Operating principles",
+          "text": "We build for medical accuracy, workflow clarity, accessibility across resource settings, and continuous improvement as new clinical and operational problems appear."
+        }
+      ]
+    },
+    "productEcosystem": {
+      "label": "Product ecosystem",
+      "heading": "Three active products, one connected clinical software suite.",
+      "description": "Move from radiology workflow to whole-facility control and intelligence without losing operational context between teams.",
+      "proof": {
+        "radex": [
+          "RIS",
+          "PACS",
+          "DICOM",
+          "Reports"
+        ],
+        "mend": [
+          "Digital twin",
+          "Teams",
+          "Maintenance",
+          "Audit"
+        ],
+        "adam": [
+          "AI orchestration",
+          "Insight",
+          "Automation",
+          "Support"
+        ]
+      },
+      "underDevelopment": "Under development",
+      "underDevelopmentAria": "{name} is under development",
+      "openProduct": "Open {name}"
+    },
+    "systemMap": {
+      "label": "System map",
+      "heading": "Syvursoft coordinates specialized healthcare systems.",
+      "description": "RADex, MEND, and ADAM connect through one product direction for clinical operations, imaging workflows, and intelligence.",
+      "svgTitle": "Syvursoft connected to {products}",
+      "nodes": {
+        "central": "Clinical software ecosystem",
+        "radex": "Radiology engine",
+        "mend": "Facility operations",
+        "adam": "Clinical intelligence"
+      }
+    }
+  },
+  "contact": {
+    "label": "Get in Touch",
+    "heading": "Contact Us",
+    "description": "If you want a demo, please reach out through any of the channels below",
+    "items": {
+      "email": {
+        "title": "Email",
+        "subtitle": "Send us a message anytime"
+      },
+      "whatsapp": {
+        "title": "WhatsApp",
+        "subtitle": "Chat with us directly"
+      },
+      "telegram": {
+        "title": "Telegram",
+        "subtitle": "Fast & secure messaging"
+      },
+      "facebook": {
+        "title": "Facebook",
+        "subtitle": "Follow our updates"
+      },
+      "website": {
+        "title": "Website",
+        "subtitle": "Visit our main site"
+      },
+      "linkedin": {
+        "title": "LinkedIn",
+        "subtitle": "Connect professionally"
+      }
+    }
+  },
+  "products": {
+    "radex": {
+      "shortRole": "Radiology engine",
+      "description": "Unified RIS, PACS, DICOM viewer, reporting, scheduling, billing, and operational tools for diagnostic imaging teams."
+    },
+    "mend": {
+      "shortRole": "Facility operating system",
+      "description": "A digital simulation of any medical facility, giving every team the dashboards and workflows needed to control operations from every corner."
+    },
+    "adam": {
+      "shortRole": "Under development",
+      "description": "AI orchestration for insight, automation, decision support, and cross-product intelligence across the Syvursoft ecosystem."
+    }
+  },
+  "about": {
+    "hero": {
+      "title": "About <brand>SyvurSoft</brand>",
+      "description": "Transforming complex medical data into intuitive, actionable insights for healthcare professionals worldwide."
+    },
+    "story": {
+      "label": "Origin",
+      "heading": "Our Story",
+      "founderName": "Dr. Waleed Sheha",
+      "founderRole": "Emergency & Critical Care Physician • Founder",
+      "founderImageAlt": "Dr. Waleed Sheha",
+      "quotes": [
+        "“I started SyvurSoft after working for years in busy emergency rooms and ICUs. As a doctor, I kept facing the same problem - we had to make quick decisions with complex patient data, especially blood gas results.”",
+        "“I looked for tools to help with this, but couldn't find anything that was both accurate and easy to use in high-pressure situations. So I decided to build one myself.”",
+        "“This led to ABGen, our first app that helps doctors quickly understand blood gas results. We designed it to be simple enough to use during emergencies but detailed enough to provide valuable insights.”"
+      ]
+    },
+    "purpose": {
+      "label": "Purpose",
+      "heading": "Our Mission",
+      "whyWeStarted": {
+        "title": "Why We Started",
+        "text": "We started SyvurSoft to make better medical software. As doctors, we know how hard it can be to make quick decisions with complex patient data. Our goal is simple: create tools that make doctors' lives easier and help patients get better care.",
+        "quote": "“We turn complicated medical data into clear, useful information that helps doctors make better decisions.”"
+      },
+      "whatWeWant": {
+        "title": "What We Want to Do",
+        "items": [
+          {
+            "text": "Help Doctors Make Better Decisions",
+            "description": "Easier understanding of test results."
+          },
+          {
+            "text": "Better Patient Care",
+            "description": "Spot problems faster."
+          },
+          {
+            "text": "Better Medical Education",
+            "description": "Interactive learning tools."
+          },
+          {
+            "text": "Tools for Everyone",
+            "description": "Software for all resource settings."
+          },
+          {
+            "text": "Keep Improving",
+            "description": "Constantly solving new problems."
+          }
+        ]
+      }
+    },
+    "methodology": {
+      "label": "Methodology",
+      "heading": "Our Approach",
+      "description": "At SyvurSoft, we combine medical expertise with technological innovation to create software that truly serves healthcare professionals.",
+      "cards": [
+        {
+          "title": "Clinical Expertise",
+          "text": "Founded by a practicing physician with real-world clinical experience. Solutions built from deep medical knowledge."
+        },
+        {
+          "title": "User-Centered Design",
+          "text": "Built with the clinician's workflow in mind. Ensuring seamless integration in high-pressure environments."
+        },
+        {
+          "title": "Educational Focus",
+          "text": "Enhancing understanding through interactive tools. Every feature builds clinical reasoning skills."
+        }
+      ]
+    },
+    "values": {
+      "label": "Core Beliefs",
+      "heading": "Our Values",
+      "items": [
+        {
+          "title": "Excellence",
+          "text": "Highest standards of medical accuracy and evidence-based practice."
+        },
+        {
+          "title": "Innovation",
+          "text": "Combining medical expertise with cutting-edge tech to solve problems."
+        },
+        {
+          "title": "Accessibility",
+          "text": "Tools useful for clinicians across all resource settings worldwide."
+        },
+        {
+          "title": "Education",
+          "text": "Turning every clinical decision into a learning opportunity."
+        }
+      ]
+    },
+    "vision": {
+      "heading": "Our Vision",
+      "quote": "“SyvurSoft aims to become the leading developer of specialized medical software solutions that transform complex clinical data into actionable insights.”",
+      "description": "We envision a future where advanced analytical tools are seamlessly integrated into clinical practice, enhancing diagnostic accuracy and patient outcomes."
+    }
+  },
+  "privacy": {
+    "title": "Privacy Policy",
+    "lastUpdated": "Last Updated: May 15, 2023",
+    "sections": {
+      "introduction": {
+        "title": "1. Introduction",
+        "before": [
+          "At SyvurSoft, we respect your privacy and are committed to protecting your personal data. This privacy policy will inform you about how we look after your personal data when you visit our website or use our applications, and tell you about your privacy rights and how the law protects you.",
+          "This policy applies to all information collected through our website https://syvursoft.com, our mobile applications ABGen, Atria and any related services, sales, marketing or events."
+        ]
+      },
+      "dataWeCollect": {
+        "title": "2. Data We Collect",
+        "before": [
+          "When you use ABGen or visit our website, we may collect the following types of information:"
+        ],
+        "items": [
+          {
+            "label": "Usage Data:",
+            "text": "Anonymous information about how you use our applications, including features accessed and time spent."
+          },
+          {
+            "label": "Device Information:",
+            "text": "Technical data about the device you use to access our services, including device type, operating system, and browser type."
+          },
+          {
+            "label": "Contact Information:",
+            "text": "If you contact us for support or participate in our community, we may collect your email address and other contact details you provide."
+          },
+          {
+            "label": "Log Data:",
+            "text": "Our servers automatically record information that your browser sends whenever you visit our website, such as your IP address, browser type and version, time zone setting, and pages visited."
+          },
+          {
+            "label": "Cookies and Similar Technologies:",
+            "text": "We may use cookies and similar tracking technologies to track activity on our website and hold certain information."
+          }
+        ],
+        "after": [
+          "We do not collect or store any patient data or protected health information (PHI) entered into ABGen. All clinical calculations are performed locally on your device."
+        ]
+      },
+      "dataUse": {
+        "title": "3. How We Use Your Data",
+        "before": [
+          "We use the information we collect to:"
+        ],
+        "items": [
+          "Improve and optimize our applications and services",
+          "Provide technical support",
+          "Communicate with you about updates and new features",
+          "Ensure the security and proper functioning of our applications",
+          "Analyze usage patterns to improve user experience",
+          "Respond to your requests, questions, and concerns",
+          "Comply with applicable laws and regulations"
+        ],
+        "after": [
+          "We will only use your personal data for the purposes for which we collected it, unless we reasonably consider that we need to use it for another reason compatible with the original purpose."
+        ]
+      },
+      "legalBasis": {
+        "title": "4. Legal Basis for Processing",
+        "before": [
+          "We will only process your personal data when we have a legal basis to do so. The legal basis will depend on the purposes for which we have collected and use your personal data. In most cases, the legal basis will be one of the following:"
+        ],
+        "items": [
+          {
+            "label": "Consent:",
+            "text": "You have given us consent to process your personal data for a specific purpose."
+          },
+          {
+            "label": "Contract:",
+            "text": "Processing is necessary for the performance of a contract with you."
+          },
+          {
+            "label": "Legitimate Interests:",
+            "text": "Processing is necessary for our legitimate interests or those of a third party, provided those interests are not overridden by your rights and interests."
+          },
+          {
+            "label": "Legal Obligation:",
+            "text": "Processing is necessary for compliance with a legal obligation."
+          }
+        ]
+      },
+      "sharing": {
+        "title": "5. Data Sharing and Disclosure",
+        "before": [
+          "We do not sell, trade, or otherwise transfer your personal information to outside parties except in the following circumstances:"
+        ],
+        "items": [
+          {
+            "label": "Service Providers:",
+            "text": "We may share your data with trusted third parties who assist us in operating our website, conducting our business, or servicing you, provided those parties agree to keep this information confidential."
+          },
+          {
+            "label": "Legal Requirements:",
+            "text": "We may disclose your information where we are legally required to do so to comply with applicable law, governmental requests, judicial proceedings, court orders, or legal processes."
+          },
+          {
+            "label": "Business Transfers:",
+            "text": "If we are involved in a merger, acquisition, or sale of all or a portion of our assets, your data may be transferred as part of that transaction."
+          },
+          {
+            "label": "With Your Consent:",
+            "text": "We may disclose your personal information for any other purpose with your consent."
+          }
+        ]
+      },
+      "security": {
+        "title": "6. Data Security",
+        "before": [
+          "We implement appropriate security measures to protect your personal data against unauthorized access, alteration, disclosure, or destruction. However, no method of transmission over the Internet or electronic storage is 100% secure, and we cannot guarantee absolute security.",
+          "Our security measures include:"
+        ],
+        "items": [
+          "Encryption of sensitive data",
+          "Regular security assessments",
+          "Access controls and authentication procedures",
+          "Secure development practices"
+        ],
+        "after": [
+          "We limit access to your personal data to those employees, agents, contractors and other third parties who have a business need to know. They will only process your personal data on our instructions and they are subject to a duty of confidentiality."
+        ]
+      },
+      "retention": {
+        "title": "7. Data Retention",
+        "before": [
+          "We will only retain your personal data for as long as necessary to fulfill the purposes we collected it for, including for the purposes of satisfying any legal, accounting, or reporting requirements.",
+          "To determine the appropriate retention period for personal data, we consider:"
+        ],
+        "items": [
+          "The amount, nature, and sensitivity of the personal data",
+          "The potential risk of harm from unauthorized use or disclosure",
+          "The purposes for which we process your personal data",
+          "Whether we can achieve those purposes through other means",
+          "The applicable legal requirements"
+        ]
+      },
+      "international": {
+        "title": "8. International Data Transfers",
+        "before": [
+          "We may transfer, store, and process your information in countries other than your own. Our servers are primarily located in Egypt, but we may use service providers based in various locations globally.",
+          "If we transfer your personal data to countries outside your jurisdiction, we will take steps to ensure that your personal data receives an adequate level of protection, including through:"
+        ],
+        "items": [
+          "Using specific contracts approved for use in certain jurisdictions",
+          "Relying on certification schemes like the EU-US Privacy Shield",
+          "Obtaining your consent for these transfers where required"
+        ]
+      },
+      "cookies": {
+        "title": "9. Cookies and Tracking Technologies",
+        "before": [
+          "We use cookies and similar tracking technologies to track activity on our website and hold certain information. Cookies are files with a small amount of data which may include an anonymous unique identifier.",
+          "We use the following types of cookies:"
+        ],
+        "items": [
+          {
+            "label": "Essential Cookies:",
+            "text": "Necessary for the website to function properly."
+          },
+          {
+            "label": "Analytical/Performance Cookies:",
+            "text": "Allow us to recognize and count the number of visitors and see how visitors move around our website."
+          },
+          {
+            "label": "Functionality Cookies:",
+            "text": "Used to recognize you when you return to our website."
+          }
+        ],
+        "after": [
+          "You can instruct your browser to refuse all cookies or to indicate when a cookie is being sent. However, if you do not accept cookies, you may not be able to use some portions of our website."
+        ]
+      },
+      "rights": {
+        "title": "10. Your Rights",
+        "before": [
+          "Depending on your location, you may have certain rights regarding your personal data, including:"
+        ],
+        "items": [
+          {
+            "label": "Right to Access:",
+            "text": "The right to request copies of your personal data."
+          },
+          {
+            "label": "Right to Rectification:",
+            "text": "The right to request that we correct any inaccurate data about you."
+          },
+          {
+            "label": "Right to Erasure:",
+            "text": "The right to request that we delete your personal data in certain circumstances."
+          },
+          {
+            "label": "Right to Restrict Processing:",
+            "text": "The right to request that we restrict the processing of your personal data in certain circumstances."
+          },
+          {
+            "label": "Right to Data Portability:",
+            "text": "The right to request that we transfer the data we have collected to another organization or directly to you."
+          },
+          {
+            "label": "Right to Object:",
+            "text": "The right to object to our processing of your personal data in certain circumstances."
+          },
+          {
+            "label": "Rights Related to Automated Decision Making:",
+            "text": "The right not to be subject to a decision based solely on automated processing."
+          }
+        ],
+        "after": [
+          "To exercise any of these rights, please contact us using the information provided below. We may need to request specific information from you to help us confirm your identity and ensure your right to access your personal data."
+        ]
+      },
+      "children": {
+        "title": "11. Children's Privacy",
+        "before": [
+          "Our services are not intended for use by children under the age of 18, and we do not knowingly collect personal data from children under 18. If we learn we have collected or received personal data from a child under 18 without verification of parental consent, we will delete that information."
+        ]
+      },
+      "thirdParty": {
+        "title": "12. Third-Party Links",
+        "before": [
+          "Our website and applications may contain links to third-party websites or services that are not owned or controlled by SyvurSoft. We have no control over, and assume no responsibility for, the content, privacy policies, or practices of any third-party websites or services."
+        ]
+      },
+      "changes": {
+        "title": "13. Changes to This Policy",
+        "before": [
+          "We may update this privacy policy from time to time. We will notify you of any changes by posting the new privacy policy on this page and updating the \"Last Updated\" date at the top of this policy."
+        ],
+        "after": [
+          "We encourage you to review this privacy policy periodically for any changes. Changes to this privacy policy are effective when they are posted on this page."
+        ]
+      }
+    },
+    "contact": {
+      "label": "Get In Touch",
+      "heading": "Contact U",
+      "headingAccent": "s",
+      "description": "If you have any questions about this privacy policy, please reach out through any of the channels below"
+    }
+  },
+  "terms": {
+    "title": "Terms of Service",
+    "lastUpdated": "Last Updated: May 15, 2023",
+    "notice": "By creating an account, accessing, or using the Service, you acknowledge that you have read, understood, and agree to be bound by these Terms and our Privacy Policy, which is incorporated by reference into these Terms. If you do not agree to these Terms, you may not use the Service.",
+    "privacyLink": "Privacy Policy",
+    "sections": {
+      "description": {
+        "title": "1. Description of the Service",
+        "before": [
+          "ATRIA is a software tool designed to assist qualified medical professionals in their work. The Service is provided as a tool to support, not replace, professional medical practices."
+        ],
+        "callout": {
+          "label": "CRITICAL ACKNOWLEDGEMENT:",
+          "text": "ATRIA is an assistive tool and is not a substitute for professional medical judgment, diagnosis, or treatment. You, as a qualified medical professional, are solely responsible for all medical decisions and patient outcomes."
+        }
+      },
+      "eligibility": {
+        "title": "2. Eligibility and User Responsibilities",
+        "items": [
+          {
+            "label": "Eligibility:",
+            "text": "You represent and warrant that you are a qualified medical professional and are legally permitted to use the Service in your jurisdiction."
+          },
+          {
+            "label": "Account Security:",
+            "text": "You are responsible for maintaining the confidentiality of your account login information and are fully responsible for all activities that occur under your account. You agree to immediately notify us of any unauthorized use or security breach."
+          },
+          {
+            "label": "Data Accuracy:",
+            "text": "You are solely responsible for the accuracy, legality, and appropriateness of all data you enter into the Service and for the interpretation and application of any reports or information generated by the Service."
+          },
+          {
+            "label": "Legal Compliance:",
+            "text": "You agree to use the Service in compliance with all applicable local, state, national, and international laws, rules, and regulations, including but not limited to healthcare data privacy laws (such as HIPAA, GDPR, etc.) and professional codes of conduct."
+          }
+        ]
+      },
+      "prohibited": {
+        "title": "3. Acceptable Use and Prohibited Conduct",
+        "before": [
+          "You agree not to:"
+        ],
+        "items": [
+          "Use the Service for any illegal or unauthorized purpose.",
+          "Reverse engineer, decompile, disassemble, or attempt to extract the source code of the Service.",
+          "Use the Service to store or transmit any data that is unlawful, infringing, or violates any third-party's rights.",
+          "Upload or transmit any malicious code, viruses, or worms.",
+          "Attempt to gain unauthorized access to the Service, other users' accounts, or our computer systems.",
+          "Use the Service in any manner that could damage, disable, overburden, or impair the Service."
+        ]
+      },
+      "fees": {
+        "title": "4. Fees, Payment, and Subscriptions",
+        "items": [
+          {
+            "label": "Subscription:",
+            "text": "Access to certain features of the Service may require a paid subscription. All subscription fees are charged in advance on a recurring basis (e.g., monthly or annually)."
+          },
+          {
+            "label": "Automatic Renewal:",
+            "text": "Your subscription will automatically renew at the end of each billing cycle unless you cancel it through your account settings or by contacting us."
+          },
+          {
+            "label": "Fee Changes:",
+            "text": "We reserve the right to change our subscription fees at any time. We will provide you with reasonable prior notice of any price changes."
+          }
+        ]
+      },
+      "refunds": {
+        "title": "5. Refund and Cancellation Policy",
+        "items": [
+          {
+            "label": "5.1 General Policy:",
+            "text": "All subscription fees are charged in advance and are non-refundable except as expressly set forth herein or as required by applicable law."
+          },
+          {
+            "label": "5.2 New Subscriber Refund:",
+            "text": "New subscribers may cancel their subscription within fourteen (14) days of initial purchase to receive a full refund, provided no substantial use of premium features has occurred."
+          },
+          {
+            "label": "5.3 Technical Service Failures:",
+            "text": "If you experience persistent technical issues that prevent normal use of the application despite reasonable troubleshooting efforts, you may request a refund within thirty (30) days of the issue first occurring. Such requests require documentation of the technical problem and evidence of attempted resolution."
+          },
+          {
+            "label": "5.4 Refund Processing:",
+            "text": "Approved refunds will be processed within seven (7) to ten (10) business days and credited to the original payment method."
+          },
+          {
+            "label": "5.5 Pro-rated Refunds:",
+            "text": "In exceptional circumstances and at our sole discretion, we may provide pro-rated refunds for unused portions of subscription periods. Such refunds are not guaranteed and will be evaluated on a case-by-case basis."
+          },
+          {
+            "label": "5.6 Refund Requests:",
+            "text": "All refund requests must be submitted in writing to support@syvursoft.com or via WhatsApp at +20 121 164 4172, including your account details and reason for the request."
+          },
+          {
+            "label": "5.7 Third-Party Platform Purchases:",
+            "text": "Subscriptions purchased through third-party platforms (e.g., Google Play Store, Apple App Store) are subject to the respective platform's refund policies. We cannot process refunds for such purchases directly."
+          },
+          {
+            "label": "5.8 Statutory Rights:",
+            "text": "This refund policy does not affect your statutory rights as a consumer."
+          }
+        ]
+      },
+      "privacy": {
+        "title": "6. Privacy Policy",
+        "before": [
+          "Your privacy is critically important to us. Our Privacy Policy explains how we collect, use, store, and protect your personal and other data. By agreeing to these Terms, you also agree to the terms of our Privacy Policy."
+        ]
+      },
+      "intellectualProperty": {
+        "title": "7. Intellectual Property",
+        "before": [
+          "The Service and its original content, features, and functionality are and will remain the exclusive property of Syvursoft and its licensors. The Service is protected by copyright, trademark, and other laws. Our trademarks and trade dress may not be used in connection with any product or service without the prior written consent of Syvursoft."
+        ]
+      },
+      "disclaimer": {
+        "title": "8. Disclaimer of Warranties",
+        "before": [
+          "THE SERVICE IS PROVIDED ON AN \"AS IS\" AND \"AS AVAILABLE\" BASIS, WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, OR NON-INFRINGEMENT. SYVURSOFT DOES NOT WARRANT THAT THE SERVICE WILL BE UNINTERRUPTED, SECURE, ERROR-FREE, OR THAT ANY REPORTS OR DATA WILL BE ACCURATE OR RELIABLE."
+        ]
+      },
+      "liability": {
+        "title": "9. Limitation of Liability",
+        "before": [
+          "TO THE FULLEST EXTENT PERMITTED BY APPLICABLE LAW, IN NO EVENT SHALL SYVURSOFT, ITS AFFILIATES, DIRECTORS, EMPLOYEES, OR AGENTS BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES, INCLUDING WITHOUT LIMITATION, LOSS OF PROFITS, DATA, USE, GOODWILL, OR OTHER INTANGIBLE LOSSES, RESULTING FROM (I) YOUR ACCESS TO OR USE OF OR INABILITY TO ACCESS OR USE THE SERVICE; (II) ANY CONDUCT OR CONTENT OF ANY THIRD PARTY ON THE SERVICE; (III) ANY CONTENT OBTAINED FROM THE SERVICE; AND (IV) UNAUTHORIZED ACCESS, USE, OR ALTERATION OF YOUR TRANSMISSIONS OR CONTENT, WHETHER BASED ON WARRANTY, CONTRACT, TORT (INCLUDING NEGLIGENCE), OR ANY OTHER LEGAL THEORY.",
+          "OUR TOTAL CUMULATIVE LIABILITY TO YOU FOR ANY AND ALL CLAIMS ARISING FROM OR RELATING TO THE SERVICE SHALL NOT EXCEED THE GREATER OF (A) ONE HUNDRED U.S. DOLLARS ($100.00) OR (B) THE TOTAL AMOUNT OF FEES, IF ANY, THAT YOU PAID TO US FOR THE SERVICE IN THE SIX (6) MONTHS PRIOR TO THE ACTION GIVING RISE TO LIABILITY."
+        ]
+      },
+      "indemnification": {
+        "title": "10. Indemnification",
+        "before": [
+          "You agree to defend, indemnify, and hold harmless Syvursoft and its licensee and licensors, and their employees, contractors, agents, officers, and directors, from and against any and all claims, damages, obligations, losses, liabilities, costs or debt, and expenses (including but not limited to attorney's fees), resulting from or arising out of a) your use and access of the Service, or b) a breach of these Terms."
+        ]
+      },
+      "termination": {
+        "title": "11. Termination",
+        "before": [
+          "We may terminate or suspend your account and bar access to the Service immediately, without prior notice or liability, at our sole discretion, for any reason whatsoever, including but not limited to a breach of these Terms. Upon termination, your right to use the Service will immediately cease."
+        ]
+      },
+      "modifications": {
+        "title": "12. Modifications to the Terms",
+        "before": [
+          "We reserve the right, at our sole discretion, to modify or replace these Terms at any time. If a revision is material, we will provide at least 30 days notice prior to any new terms taking effect. By continuing to access or use our Service after any revisions become effective, you agree to be bound by the revised terms."
+        ]
+      },
+      "governingLaw": {
+        "title": "13. Governing Law and Jurisdiction",
+        "before": [
+          "These Terms shall be governed and construed in accordance with the laws of the Arab Republic of Egypt, without regard to its conflict of law provisions. You agree to submit to the exclusive jurisdiction of the courts located in Cairo, Egypt to resolve any legal matter arising from the Terms."
+        ]
+      },
+      "general": {
+        "title": "14. General Provisions",
+        "items": [
+          {
+            "label": "Entire Agreement:",
+            "text": "These Terms and our Privacy Policy constitute the entire agreement between you and Syvursoft concerning the Service."
+          },
+          {
+            "label": "Severability:",
+            "text": "If any provision of these Terms is held to be invalid or unenforceable, the remaining provisions of these Terms will remain in effect."
+          },
+          {
+            "label": "No Waiver:",
+            "text": "No waiver of any term of these Terms shall be deemed a further or continuing waiver of such term or any other term."
+          }
+        ]
+      }
+    },
+    "contact": {
+      "label": "Get In Touch",
+      "heading": "Contact U",
+      "headingAccent": "s",
+      "description": "If you have any questions about these Terms, please reach out through any of the channels below"
+    }
+  },
+  "radex": {
+    "hero": {
+      "title": "Empowering <accent>Healthcare</accent> with Innovation",
+      "description": "Advanced Hospital Management Systems & Radiology Information Solutions designed for modern medical facilities.",
+      "badge": "RADex is just the beginning",
+      "bookDemo": "Book a Demo",
+      "dialog": {
+        "title": "Book a Demo",
+        "text": "You will be transferred to Contact to choose your preferred method of communication.",
+        "decline": "Not OK",
+        "confirm": "OK"
+      }
+    },
+    "features": {
+      "eyebrow": "The All-in-One Solution Journey Begins",
+      "title": "Meet <brand>RADex</brand>",
+      "description": "The first decisive step into a fully unified medical system. We combine next-gen RIS, enterprise PACS, and a zero-footprint Viewer into one seamless engine, redefining speed and precision in diagnostic imaging.",
+      "beyond": "Beyond RIS, <brand>RADex</brand> offers a comprehensive suite of modules to manage every aspect of your healthcare facility.",
+      "clickMeAlt": "Click Me",
+      "items": {
+        "portal": {
+          "title": "Patient Portal",
+          "description": "Empower patients with secure online access to their images and reports. Reduce administrative workload with self-service features and automated result delivery."
+        },
+        "radCatalogue": {
+          "title": "Radiology Catalogue",
+          "description": "Complete radiology service listing. Patients can search for scans, view procedure details, check availability, and self-schedule appointments 24/7."
+        },
+        "labCatalogue": {
+          "title": "Lab Catalogue",
+          "description": "Comprehensive test menu access. Patients can browse available lab tests, check preparations instructions, view pricing, and book home visits or clinic slots instantly."
+        },
+        "dashboard": {
+          "title": "Smart Dashboard",
+          "description": "Real-time practice analytics at a glance. Track patient volume, revenue trends, and modality, resource utilization with interactive charts. Make data-driven decisions instantly."
+        },
+        "patients": {
+          "title": "Patient Management",
+          "description": "A 360-degree view of your patients. Manage demographics, insurance data, and prior history in one secure location. Quick search and automated merging of duplicate records."
+        },
+        "emr": {
+          "title": "Electronic Medical Records",
+          "description": "A comprehensive digital health record for every patient. Access complete medical history, allergies, and contraindications in a single unified view."
+        },
+        "history": {
+          "title": "Clinical History Timeline",
+          "description": "Visual timeline of patient encounters, procedures, and prescriptions. Quickly understand the patient's clinical journey with an intuitive chronological display."
+        },
+        "schedule": {
+          "title": "Intelligent Scheduling",
+          "description": "Intuitive appointment management with conflict detection. Automated SMS/Email reminders reduce no-shows. Color-coded views for different modalities and rooms."
+        },
+        "reception": {
+          "title": "User Friendly Interface",
+          "description": "A streamlined interface for efficient booking and check-in. Manage walk-ins, verify insurance, and handle patient queues with a dedicated, user-friendly dashboard."
+        },
+        "worklist": {
+          "title": "Reservation System",
+          "description": "Centralized control for all patient bookings. enhanced filtering and status tracking ensure every reservation is accounted for, reducing gaps and maximizing modality uptime."
+        },
+        "clinicalWorklist": {
+          "title": "Worklist",
+          "description": "Unified clinical workspace. Upload imaging studies directly and enter lab results efficiently. Streamline your diagnostic workflow with quick access to all required inputs."
+        },
+        "mwl": {
+          "title": "Modality Worklist",
+          "description": "Automated seamless integration with imaging modalities. Eliminate manual data entry errors and ensure patient demographics match perfectly with DICOM headers."
+        },
+        "templates": {
+          "title": "Flex Templates",
+          "description": "Flexible report templates with preset structures. Standardize reporting across your institution while saving time on repetitive formatting."
+        },
+        "pacs": {
+          "title": "PACS Simplified",
+          "description": "One search for all. Unified query and retrieve across all your DICOM nodes. Find any study, from any modality, instantly from a single powerful search bar."
+        },
+        "viewer": {
+          "title": "Web DICOM Viewer",
+          "description": "Zero-footprint diagnostic viewer. Perform MPR, MIP, and 3D reconstructions directly in your browser without installing any software."
+        },
+        "reporting": {
+          "title": "Result & Report Writer",
+          "description": "Advanced reporting module with customizable templates and rich text editing. Automatically incorporate patient data and measurements for professional, accurate reports."
+        },
+        "print": {
+          "title": "Just Print",
+          "description": "Simple, one-click printing to any device. Supports physical printers, PDF generation, and paperless workflows with zero configuration."
+        },
+        "tracker": {
+          "title": "Staff Tracker & KPI",
+          "description": "Monitor staff performance and operational efficiency in real-time. Track key performance indicators (KPIs), identify workflow bottlenecks, and optimize resource allocation for maximum productivity."
+        },
+        "invoice": {
+          "title": "Billing & Invoicing",
+          "description": "Automated invoicing linked directly to completed exams. Support for multiple insurance payers, split billing, and detailed financial audits to prevent revenue leakage."
+        },
+        "accounting": {
+          "title": "Financial Accounting",
+          "description": "Integrated financial management handling revenue cycles, expenses, and profit/loss statements. Generate comprehensive financial reports to monitor holistic practice health."
+        },
+        "inventory": {
+          "title": "Inventory Control",
+          "description": "Track medical supplies and contrast media efficiently. Automated alerts for low stock and expiration dates ensure you never run out of critical resources."
+        },
+        "audit": {
+          "title": "Audit Trail & Security",
+          "description": "Comprehensive HIPAA-compliant logging of every user action. monitor system access, data modifications, and export activities to ensure complete security and compliance."
+        }
+      }
+    },
+    "cardLabel": "RADex Capability",
+    "ecosystem": {
+      "eyebrow": "The Complete Ecosystem",
+      "title": "Three Pillars of <accent>Power</accent>",
+      "items": {
+        "radex": {
+          "title": "RADex",
+          "description": "The complete radiology engine. Unified RIS, PACS, and Viewer for ultimate diagnostic speed and precision."
+        },
+        "mend": {
+          "title": "MEND",
+          "description": "An adaptive medical-facility operating system that simulates the real facility and controls workflows from every corner."
+        },
+        "adam": {
+          "title": "ADAM",
+          "description": "The central intelligence brain that orchestrates and optimizes the entire ecosystem."
+        }
+      }
+    }
+  },
+  "mendPage": {
+    "nav": {
+      "logo": "MEND",
+      "toggle": "Toggle navigation",
+      "home": "Home",
+      "platform": "Platform",
+      "doctors": "Doctors",
+      "nurses": "Nurses",
+      "admin": "Admin",
+      "scale": "Scale"
+    },
+    "hero": {
+      "eyebrow": "Medical cloud System",
+      "title": "A new way to",
+      "titleLine2": "manage",
+      "titleAccent": "healthcare.",
+      "description": "From a single clinic to a 1000-bed hospital. Every workflow, every role, every department — one connected system that grows with you.",
+      "requestDemo": "Request Demo",
+      "exploreFeatures": "Explore Features",
+      "stats": [
+        {
+          "value": "1000+",
+          "label": "Beds capacity"
+        },
+        {
+          "value": "< 60s",
+          "label": "Full audit"
+        },
+        {
+          "value": "24/7",
+          "label": "Always on"
+        },
+        {
+          "value": "0",
+          "label": "Paperwork"
+        }
+      ],
+      "coreMark": "MEND",
+      "orbit": [
+        "ICU",
+        "ER",
+        "Radiology",
+        "Lab",
+        "Blood bank",
+        "Dialysis unit",
+        "Patient management",
+        "HR",
+        "Finances",
+        "Maintenance",
+        "Zero paperwork",
+        "Auto-filled forms",
+        "Complete medical dashboard",
+        "Hospital structure"
+      ]
+    },
+    "platform": {
+      "eyebrow": "Build your hospital inside Mend",
+      "title": "Every aspect.",
+      "titleAccent": "One system.",
+      "description": "Structural, functional, medical, administrative, financial, and even maintenance. Mend covers every dimension of your healthcare facility so nothing falls through the cracks.",
+      "cards": [
+        {
+          "title": "Build your hospital",
+          "text": "Design your facility's structure inside Mend — departments, floors, beds, equipment. See the entire workflow as it happens. From a small clinic with one room to a hospital with a thousand beds, the architecture adapts to you."
+        },
+        {
+          "title": "Clinical workflows",
+          "text": "Doctors, nurses, and specialists work inside one connected clinical environment — records, orders, diagnostics, and treatment flow together."
+        },
+        {
+          "title": "Admin command",
+          "text": "The admin is always on the scene. Finance, HR, procurement, inventory, and operations — all visible from one control layer."
+        },
+        {
+          "title": "AI integration",
+          "text": "Trained by doctors and fine-tuned for differential diagnosis. AI that understands medicine, not just text."
+        },
+        {
+          "title": "Maintenance covered",
+          "text": "Equipment tracking, facility maintenance schedules, and service requests. The operational backbone that keeps everything running."
+        },
+        {
+          "title": "Financial system",
+          "text": "Comprehensive financial management — billing, invoicing, insurance, and reporting. Everything calculated, nothing missed."
+        }
+      ]
+    },
+    "audit": {
+      "eyebrow": "Audit in real time",
+      "title": "Audit your entire hospital",
+      "titleAccent": "in one minute.",
+      "description": "Every person inside the hospital carries a part of the system. When everyone contributes, full visibility becomes instant — not a quarterly exercise.",
+      "scaleStart": "Start",
+      "scaleEnd": "Complete audit < 60s",
+      "highlightValue": "< 60s",
+      "highlightLabel": "Full hospital audit — because everyone inside the system is carrying the data in real time"
+    },
+    "doctors": {
+      "eyebrow": "For doctors",
+      "title": "Type the first letter.",
+      "titleAccent": "Mend does the rest.",
+      "description": "All the help you need, exactly where you need it. The system anticipates, suggests, and completes so you can focus on the patient, not the keyboard.",
+      "items": [
+        {
+          "title": "AI differential diagnosis",
+          "text": "Trained by physicians and fine-tuned for clinical reasoning. Real medical intelligence, not generic text generation."
+        },
+        {
+          "title": "Auto-completion from workflow",
+          "text": "Patient files auto-complete from doctor and nurse workflows. What you document once flows everywhere it needs to go — no double typing."
+        },
+        {
+          "title": "Smart prescriptions & orders",
+          "text": "Type the first letter and the system surfaces what you need — medications, lab tests, imaging orders — with dosing, interactions, and context."
+        }
+      ],
+      "cards": [
+        {
+          "title": "AI-powered",
+          "text": "Differential diagnosis trained by real doctors"
+        },
+        {
+          "title": "Zero re-typing",
+          "text": "Document once, it flows everywhere"
+        },
+        {
+          "title": "Complete patient context",
+          "text": "Records, interactions, AI support, and full medical history — on one screen so attention stays on treatment."
+        }
+      ]
+    },
+    "nurses": {
+      "eyebrow": "For nurses",
+      "title": "Tap a button.",
+      "titleAccent": "The request is sent.",
+      "description": "Vital sign reminders, medication schedules, doctor order tracking — Mend handles the cognitive load so nurses can focus on the patient at the bedside.",
+      "cards": [
+        {
+          "title": "Vital sign reminders",
+          "text": "Never miss a reading. Mend reminds you when vitals are due and logs them directly into the patient record."
+        },
+        {
+          "title": "Medication tracking",
+          "text": "Medication schedules, dosing reminders, and doctor orders — all tracked and visible. No need to worry, leave it to Mend."
+        },
+        {
+          "title": "One-tap requests",
+          "text": "Send requests, flag concerns, and coordinate with the care team with a single tap. No forms, no delays."
+        }
+      ]
+    },
+    "paperless": {
+      "eyebrow": "Zero paperwork",
+      "title": "Every form is",
+      "titleAccent": "auto-filled.",
+      "description": "No more routine filing systems. Every paper, every form, every report is auto-populated from the workflow and ready for review. You just confirm.",
+      "items": [
+        {
+          "title": "Auto-completion across roles",
+          "text": "When a doctor documents, the nurse sees it. When a nurse records vitals, it fills the patient file. No one types the same thing twice."
+        },
+        {
+          "title": "Ready for review, not for filling",
+          "text": "Every document arrives pre-filled and formatted. Your job is to review and approve, not to create from scratch."
+        },
+        {
+          "title": "Instant audit trail",
+          "text": "Every action is logged, timestamped, and traceable. Full compliance without manual documentation effort."
+        }
+      ],
+      "highlight": {
+        "value": "0",
+        "label": "Forms filled by hand. Every document auto-populated from the clinical workflow."
+      }
+    },
+    "labImaging": {
+      "eyebrow": "Lab & imaging",
+      "title": "Complete lab. Complete PACS.",
+      "titleAccent": "One viewer.",
+      "description": "A full laboratory information system and a complete PACS with the Mend viewer — view imaging exactly as it appears on the machine, directly inside the platform.",
+      "cards": [
+        {
+          "title": "Complete laboratory system",
+          "text": "Order tests, track samples, receive results, and integrate findings into the patient record. A full LIS inside Mend — no external system needed."
+        },
+        {
+          "title": "PACS with Mend viewer",
+          "text": "View X-rays, CT scans, MRIs, and ultrasounds exactly as they appear on the imaging machine. No separate PACS software — it's all inside Mend."
+        }
+      ]
+    },
+    "admin": {
+      "eyebrow": "Admin & finance",
+      "title": "The admin is always",
+      "titleAccent": "on the scene.",
+      "description": "HR, payroll, sign-in, financial reporting, and employee self-service. Mend gives administrators complete operational visibility without leaving the platform.",
+      "cards": [
+        {
+          "title": "HR system",
+          "text": "Complete human resources management with self-serving employee portal."
+        },
+        {
+          "title": "One-button payroll",
+          "text": "Process the entire payroll with a single action. Salaries, deductions, and disbursements — calculated and ready."
+        },
+        {
+          "title": "Smart sign-in",
+          "text": "Innovative ways for signing in and out. Attendance tracked without friction."
+        },
+        {
+          "title": "Financial reporting",
+          "text": "Comprehensive financial system. Every transaction tracked, every report auto-generated."
+        }
+      ]
+    },
+    "scale": {
+      "eyebrow": "Scale with confidence",
+      "title": "Mend grows with",
+      "titleAccent": "your business.",
+      "description": "Start with a single clinic. Expand to multiple departments. Scale to a full hospital. Mend adapts — not just ICU, it can be made to match any department design. Everything calculated, everything connected.",
+      "scaleStart": "Clinic",
+      "scaleEnd": "1000+ beds",
+      "items": [
+        {
+          "title": "Any department design",
+          "text": "Not just ICU. Mend adapts to ER, OR, wards, outpatient clinics, pharmacy, radiology — any configuration you need."
+        },
+        {
+          "title": "Everything calculated",
+          "text": "Capacity planning, resource allocation, staffing ratios — Mend computes what you need as you grow."
+        }
+      ],
+      "highlights": [
+        {
+          "value": "1",
+          "label": "Clinic to start"
+        },
+        {
+          "value": "1000+",
+          "label": "Beds at scale"
+        }
+      ]
+    },
+    "cta": {
+      "eyebrow": "Ready to transform your hospital?",
+      "title": "Start with Mend.",
+      "titleAccent": "Start today.",
+      "description": "One platform. Every department. Zero paperwork. From your first patient to your thousandth bed.",
+      "requestDemo": "Request Demo",
+      "exploreFeatures": "Explore Features"
+    },
+    "footer": {
+      "logo": "MEND",
+      "copyright": "Copyright © 2025 MEND Healthcare Management System. All rights reserved to Syvursoft and Dr Waleed Sheha, Dr Adel Kotb."
+    }
+  }
+}

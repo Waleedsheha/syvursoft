@@ -1,10 +1,12 @@
 "use client";
 
 import React from "react";
+import { useLocale, useTranslations } from "next-intl";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ContactGrid from "@/components/ContactGrid";
 import MagnetLines from "@/components/MagnetLines";
+import { directionOf } from "@/i18n/routing";
 import { motion } from "framer-motion";
 import {
     HeartPulse,
@@ -21,7 +23,28 @@ import {
 // Placeholder for missing image
 const FOUNDER_IMAGE = "/images/waleed.jpg";
 
+const approachStyles = [
+    { icon: Stethoscope, color: "text-blue-500", bg: "bg-blue-50" },
+    { icon: Laptop, color: "text-[#f97316]", bg: "bg-orange-50" },
+    { icon: GraduationCap, color: "text-green-500", bg: "bg-green-50" }
+];
+
+const valueIcons = [Award, Lightbulb, Globe, BookOpen];
+
+type TitledText = { title: string; text: string };
+
 export default function AboutPage() {
+    const t = useTranslations("about");
+    // The mission cards slide in from their own side, which flips in Arabic.
+    const side = directionOf(useLocale()) === "rtl" ? -1 : 1;
+    const quotes: string[] = t.raw("story.quotes");
+    const wants: { text: string; description: string }[] = t.raw("purpose.whatWeWant.items");
+    const approach: TitledText[] = t.raw("methodology.cards");
+    const values: TitledText[] = t.raw("values.items");
+    if (approach.length !== approachStyles.length || values.length !== valueIcons.length) {
+        throw new Error("The About page copy and its icons are out of step.");
+    }
+
     return (
         <main className="min-h-screen bg-slate-50 overflow-x-hidden selection:bg-orange-100 selection:text-orange-900">
             <Header />
@@ -48,10 +71,12 @@ export default function AboutPage() {
                         transition={{ duration: 0.8, ease: "easeOut" }}
                     >
                         <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-6">
-                            About <span className="text-[#f97316]">SyvurSoft</span>
+                            {t.rich("hero.title", {
+                                brand: (chunks) => <span className="text-[#f97316]">{chunks}</span>
+                            })}
                         </h1>
                         <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
-                            Transforming complex medical data into intuitive, actionable insights for healthcare professionals worldwide.
+                            {t("hero.description")}
                         </p>
                     </motion.div>
                 </div>
@@ -70,8 +95,8 @@ export default function AboutPage() {
                             viewport={{ once: true }}
                             className="text-center mb-16"
                         >
-                            <h2 className="text-sm font-bold tracking-[0.2em] text-[#f97316] uppercase mb-3">Origin</h2>
-                            <h2 className="text-4xl font-bold text-[#0a192f]">Our Story</h2>
+                            <h2 className="text-sm font-bold tracking-[0.2em] text-[#f97316] uppercase mb-3">{t("story.label")}</h2>
+                            <h2 className="text-4xl font-bold text-[#0a192f]">{t("story.heading")}</h2>
                         </motion.div>
 
                         <motion.div
@@ -81,7 +106,7 @@ export default function AboutPage() {
                             viewport={{ once: true }}
                             className="bg-white rounded-3xl p-8 md:p-12 shadow-2xl border border-gray-100 relative overflow-hidden"
                         >
-                            <div className="absolute top-0 left-0 w-2 h-full bg-[#f97316]" />
+                            <div className="absolute top-0 start-0 w-2 h-full bg-[#f97316]" />
 
                             <div className="flex flex-col md:flex-row gap-10 items-center">
                                 <div className="flex-shrink-0 relative group">
@@ -92,7 +117,7 @@ export default function AboutPage() {
                                             {/* eslint-disable-next-line @next/next/no-img-element */}
                                             <img
                                                 src={FOUNDER_IMAGE}
-                                                alt="Dr. Waleed Sheha"
+                                                alt={t("story.founderImageAlt")}
                                                 className="w-full h-full object-cover"
                                                 onError={(e) => {
                                                     e.currentTarget.style.display = "none";
@@ -107,21 +132,15 @@ export default function AboutPage() {
                                     </div>
                                 </div>
 
-                                <div className="flex-1 text-center md:text-left">
+                                <div className="flex-1 text-center md:text-start">
                                     <div className="mb-6">
-                                        <h3 className="text-3xl font-bold text-[#0a192f]">Dr. Waleed Sheha</h3>
-                                        <p className="text-[#f97316] font-medium text-lg mt-1">Emergency & Critical Care Physician • Founder</p>
+                                        <h3 className="text-3xl font-bold text-[#0a192f]">{t("story.founderName")}</h3>
+                                        <p className="text-[#f97316] font-medium text-lg mt-1">{t("story.founderRole")}</p>
                                     </div>
                                     <div className="space-y-4 text-gray-600 leading-relaxed text-lg">
-                                        <p>
-                                            &ldquo;I started SyvurSoft after working for years in busy emergency rooms and ICUs. As a doctor, I kept facing the same problem - we had to make quick decisions with complex patient data, especially blood gas results.&rdquo;
-                                        </p>
-                                        <p>
-                                            &ldquo;I looked for tools to help with this, but couldn&apos;t find anything that was both accurate and easy to use in high-pressure situations. So I decided to build one myself.&rdquo;
-                                        </p>
-                                        <p>
-                                            &ldquo;This led to ABGen, our first app that helps doctors quickly understand blood gas results. We designed it to be simple enough to use during emergencies but detailed enough to provide valuable insights.&rdquo;
-                                        </p>
+                                        {quotes.map((quote) => (
+                                            <p key={quote}>{quote}</p>
+                                        ))}
                                     </div>
                                 </div>
                             </div>
@@ -139,13 +158,13 @@ export default function AboutPage() {
                         viewport={{ once: true }}
                         className="text-center mb-16"
                     >
-                        <h2 className="text-sm font-bold tracking-[0.2em] text-[#f97316] uppercase mb-3">Purpose</h2>
-                        <h2 className="text-4xl font-bold text-[#0a192f]">Our Mission</h2>
+                        <h2 className="text-sm font-bold tracking-[0.2em] text-[#f97316] uppercase mb-3">{t("purpose.label")}</h2>
+                        <h2 className="text-4xl font-bold text-[#0a192f]">{t("purpose.heading")}</h2>
                     </motion.div>
 
                     <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
                         <motion.div
-                            initial={{ opacity: 0, x: -30 }}
+                            initial={{ opacity: 0, x: -30 * side }}
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true }}
                             className="bg-white p-10 rounded-3xl shadow-lg border border-gray-100 hover:shadow-xl transition-shadow"
@@ -153,17 +172,17 @@ export default function AboutPage() {
                             <div className="w-14 h-14 bg-red-50 rounded-2xl flex items-center justify-center mb-6 text-red-500">
                                 <HeartPulse className="w-8 h-8" />
                             </div>
-                            <h3 className="text-2xl font-bold text-[#0a192f] mb-4">Why We Started</h3>
+                            <h3 className="text-2xl font-bold text-[#0a192f] mb-4">{t("purpose.whyWeStarted.title")}</h3>
                             <p className="text-gray-600 mb-6 leading-relaxed">
-                                We started SyvurSoft to make better medical software. As doctors, we know how hard it can be to make quick decisions with complex patient data. Our goal is simple: create tools that make doctors&apos; lives easier and help patients get better care.
+                                {t("purpose.whyWeStarted.text")}
                             </p>
-                            <div className="pl-4 border-l-4 border-[#f97316] italic text-gray-500">
-                                &ldquo;We turn complicated medical data into clear, useful information that helps doctors make better decisions.&rdquo;
+                            <div className="ps-4 border-s-4 border-[#f97316] italic rtl:not-italic text-gray-500">
+                                {t("purpose.whyWeStarted.quote")}
                             </div>
                         </motion.div>
 
                         <motion.div
-                            initial={{ opacity: 0, x: 30 }}
+                            initial={{ opacity: 0, x: 30 * side }}
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true }}
                             className="bg-white p-10 rounded-3xl shadow-lg border border-gray-100 hover:shadow-xl transition-shadow"
@@ -171,18 +190,12 @@ export default function AboutPage() {
                             <div className="w-14 h-14 bg-indigo-50 rounded-2xl flex items-center justify-center mb-6 text-indigo-500">
                                 <Target className="w-8 h-8" />
                             </div>
-                            <h3 className="text-2xl font-bold text-[#0a192f] mb-4">What We Want to Do</h3>
+                            <h3 className="text-2xl font-bold text-[#0a192f] mb-4">{t("purpose.whatWeWant.title")}</h3>
                             <ul className="space-y-4">
-                                {[
-                                    { text: "Help Doctors Make Better Decisions", desc: "Easier understanding of test results." },
-                                    { text: "Better Patient Care", desc: "Spot problems faster." },
-                                    { text: "Better Medical Education", desc: "Interactive learning tools." },
-                                    { text: "Tools for Everyone", desc: "Software for all resource settings." },
-                                    { text: "Keep Improving", desc: "Constantly solving new problems." }
-                                ].map((item, i) => (
+                                {wants.map((item, i) => (
                                     <li key={i} className="flex items-start gap-3 text-gray-600">
                                         <div className="mt-1.5 w-1.5 h-1.5 rounded-full bg-[#f97316] flex-shrink-0" />
-                                        <span><strong className="text-[#0a192f]">{item.text}:</strong> {item.desc}</span>
+                                        <span><strong className="text-[#0a192f]">{item.text}:</strong> {item.description}</span>
                                     </li>
                                 ))}
                             </ul>
@@ -200,33 +213,32 @@ export default function AboutPage() {
                         viewport={{ once: true }}
                         className="text-center mb-16 max-w-3xl mx-auto"
                     >
-                        <h2 className="text-sm font-bold tracking-[0.2em] text-[#f97316] uppercase mb-3">Methodology</h2>
-                        <h2 className="text-4xl font-bold text-[#0a192f] mb-6">Our Approach</h2>
-                        <p className="text-gray-600 text-lg">At SyvurSoft, we combine medical expertise with technological innovation to create software that truly serves healthcare professionals.</p>
+                        <h2 className="text-sm font-bold tracking-[0.2em] text-[#f97316] uppercase mb-3">{t("methodology.label")}</h2>
+                        <h2 className="text-4xl font-bold text-[#0a192f] mb-6">{t("methodology.heading")}</h2>
+                        <p className="text-gray-600 text-lg">{t("methodology.description")}</p>
                     </motion.div>
 
                     <div className="grid md:grid-cols-3 gap-8">
-                        {[
-                            { icon: Stethoscope, title: "Clinical Expertise", text: "Founded by a practicing physician with real-world clinical experience. Solutions built from deep medical knowledge.", color: "text-blue-500", bg: "bg-blue-50" },
-                            { icon: Laptop, title: "User-Centered Design", text: "Built with the clinician's workflow in mind. Ensuring seamless integration in high-pressure environments.", color: "text-[#f97316]", bg: "bg-orange-50" },
-                            { icon: GraduationCap, title: "Educational Focus", text: "Enhancing understanding through interactive tools. Every feature builds clinical reasoning skills.", color: "text-green-500", bg: "bg-green-50" }
-                        ].map((item, idx) => (
-                            <motion.div
-                                key={idx}
-                                initial={{ opacity: 0, y: 30 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: idx * 0.1 }}
-                                whileHover={{ y: -10 }}
-                                className="bg-white p-8 rounded-3xl shadow-lg border border-gray-50 flex flex-col items-center text-center group"
-                            >
-                                <div className={`w-20 h-20 rounded-full ${item.bg} flex items-center justify-center mb-6 group-hover:scale-110 transition-transform`}>
-                                    <item.icon className={`w-10 h-10 ${item.color}`} />
-                                </div>
-                                <h3 className="text-xl font-bold text-[#0a192f] mb-4">{item.title}</h3>
-                                <p className="text-gray-500 leading-relaxed">{item.text}</p>
-                            </motion.div>
-                        ))}
+                        {approach.map((card, idx) => {
+                            const style = approachStyles[idx];
+                            return (
+                                <motion.div
+                                    key={idx}
+                                    initial={{ opacity: 0, y: 30 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ delay: idx * 0.1 }}
+                                    whileHover={{ y: -10 }}
+                                    className="bg-white p-8 rounded-3xl shadow-lg border border-gray-50 flex flex-col items-center text-center group"
+                                >
+                                    <div className={`w-20 h-20 rounded-full ${style.bg} flex items-center justify-center mb-6 group-hover:scale-110 transition-transform`}>
+                                        <style.icon className={`w-10 h-10 ${style.color}`} />
+                                    </div>
+                                    <h3 className="text-xl font-bold text-[#0a192f] mb-4">{card.title}</h3>
+                                    <p className="text-gray-500 leading-relaxed">{card.text}</p>
+                                </motion.div>
+                            );
+                        })}
                     </div>
                 </div>
             </section>
@@ -243,30 +255,28 @@ export default function AboutPage() {
                         viewport={{ once: true }}
                         className="text-center mb-16"
                     >
-                        <h2 className="text-sm font-bold tracking-[0.2em] text-[#f97316] uppercase mb-3">Core Beliefs</h2>
-                        <h2 className="text-4xl font-bold">Our Values</h2>
+                        <h2 className="text-sm font-bold tracking-[0.2em] text-[#f97316] uppercase mb-3">{t("values.label")}</h2>
+                        <h2 className="text-4xl font-bold">{t("values.heading")}</h2>
                     </motion.div>
 
                     <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                        {[
-                            { icon: Award, title: "Excellence", text: "Highest standards of medical accuracy and evidence-based practice." },
-                            { icon: Lightbulb, title: "Innovation", text: "Combining medical expertise with cutting-edge tech to solve problems." },
-                            { icon: Globe, title: "Accessibility", text: "Tools useful for clinicians across all resource settings worldwide." },
-                            { icon: BookOpen, title: "Education", text: "Turning every clinical decision into a learning opportunity." }
-                        ].map((item, idx) => (
-                            <motion.div
-                                key={idx}
-                                initial={{ opacity: 0, scale: 0.9 }}
-                                whileInView={{ opacity: 1, scale: 1 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: idx * 0.1 }}
-                                className="bg-white/5 backdrop-blur-sm p-6 rounded-2xl border border-white/10 hover:bg-white/10 transition-colors"
-                            >
-                                <item.icon className="w-8 h-8 text-[#f97316] mb-4" />
-                                <h3 className="text-lg font-bold mb-3">{item.title}</h3>
-                                <p className="text-gray-400 text-sm leading-relaxed">{item.text}</p>
-                            </motion.div>
-                        ))}
+                        {values.map((item, idx) => {
+                            const Icon = valueIcons[idx];
+                            return (
+                                <motion.div
+                                    key={idx}
+                                    initial={{ opacity: 0, scale: 0.9 }}
+                                    whileInView={{ opacity: 1, scale: 1 }}
+                                    viewport={{ once: true }}
+                                    transition={{ delay: idx * 0.1 }}
+                                    className="bg-white/5 backdrop-blur-sm p-6 rounded-2xl border border-white/10 hover:bg-white/10 transition-colors"
+                                >
+                                    <Icon className="w-8 h-8 text-[#f97316] mb-4" />
+                                    <h3 className="text-lg font-bold mb-3">{item.title}</h3>
+                                    <p className="text-gray-400 text-sm leading-relaxed">{item.text}</p>
+                                </motion.div>
+                            );
+                        })}
                     </div>
                 </div>
             </section>
@@ -275,13 +285,13 @@ export default function AboutPage() {
             <section className="py-24 bg-white">
                 <div className="container mx-auto px-4 text-center">
                     <div className="max-w-4xl mx-auto">
-                        <h2 className="text-4xl font-bold text-[#0a192f] mb-8">Our Vision</h2>
+                        <h2 className="text-4xl font-bold text-[#0a192f] mb-8">{t("vision.heading")}</h2>
                         <p className="text-xl md:text-2xl text-gray-600 leading-relaxed font-light">
-                            &ldquo;SyvurSoft aims to become the leading developer of specialized medical software solutions that transform complex clinical data into actionable insights.&rdquo;
+                            {t("vision.quote")}
                         </p>
                         <div className="w-24 h-1 bg-[#f97316] mx-auto my-10 rounded-full" />
                         <p className="text-gray-500">
-                            We envision a future where advanced analytical tools are seamlessly integrated into clinical practice, enhancing diagnostic accuracy and patient outcomes.
+                            {t("vision.description")}
                         </p>
                     </div>
                 </div>
