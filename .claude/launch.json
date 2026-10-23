@@ -1,0 +1,18 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "mockups",
+      "runtimeExecutable": "node",
+      "runtimeArgs": ["C:/Users/w_she/AppData/Local/Temp/claude/C--Repos-syvursoft/f342b2a4-a2f6-48ea-8b51-fad1e97b0455/scratchpad/mock-server.mjs"],
+      "port": 4310,
+      "autoPort": false
+    },
+    {
+      "name": "syvursoft",
+      "runtimeExecutable": "node",
+      "runtimeArgs": ["node_modules/next/dist/bin/next", "dev", "--port", "3000"],
+      "port": 3000
+    }
+  ]
+}
