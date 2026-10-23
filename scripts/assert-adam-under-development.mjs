@@ -15,7 +15,14 @@ assert.equal(
 const productsSource = readFileSync(productsPath, "utf8");
 assert.match(
   productsSource,
-  /id:\s*"adam"[\s\S]*?shortRole:\s*"Under development"/,
+  /id:\s*"adam"[\s\S]*?status:\s*"under-development"/,
+  "ADAM product metadata should be under development",
+);
+
+const englishMessages = JSON.parse(readFileSync(join(root, "messages", "en.json"), "utf8"));
+assert.equal(
+  englishMessages.products.adam.shortRole,
+  "Under development",
   "ADAM product card should show Under development",
 );
 assert.doesNotMatch(

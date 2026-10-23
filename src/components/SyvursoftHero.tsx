@@ -4,22 +4,18 @@ import { useEffect, useRef } from "react";
 import { animate, stagger } from "animejs";
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
-import Link from "next/link";
-
-const heroStats = [
-  "Made by doctors",
-  "Who lived the whole experience",
-  "Who worked at the center of events",
-  "Who know what the system needs",
-];
+import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
 
 const orbitLabels = [
-  ["RADex", "Imaging workflow", 0],
-  ["MEND", "Facility operations", -12],
-  ["ADAM", "Clinical intelligence", -24],
+  ["RADex", "radex", 0],
+  ["MEND", "mend", -12],
+  ["ADAM", "adam", -24],
 ] as const;
 
 export default function SyvursoftHero() {
+  const t = useTranslations("home.hero");
+  const heroStats: string[] = t.raw("stats");
   const rootRef = useRef<HTMLElement | null>(null);
 
   useEffect(() => {
@@ -76,15 +72,14 @@ export default function SyvursoftHero() {
             data-hero-copy
             className="max-w-4xl text-5xl font-bold leading-[0.94] tracking-[-0.045em] text-white sm:text-6xl lg:text-7xl"
           >
-            Syvursoft builds the software backbone for medical facilities.
+            {t("title")}
           </h1>
 
           <p
             data-hero-copy
             className="mt-7 max-w-2xl text-lg leading-8 text-slate-300 sm:text-xl"
           >
-            RADex, MEND, and ADAM connect imaging, facility operations, and
-            clinical intelligence into one practical product ecosystem.
+            {t("description")}
           </p>
 
           <div
@@ -110,14 +105,14 @@ export default function SyvursoftHero() {
               }}
               className="inline-flex min-h-14 items-center justify-center gap-2 rounded-full bg-gradient-to-r from-blue-600 via-sky-500 to-cyan-400 px-8 py-4 text-sm font-semibold text-white shadow-lg shadow-sky-950/25 transition hover:-translate-y-1 hover:shadow-cyan-500/20 focus:outline-none focus:ring-2 focus:ring-cyan-200"
             >
-              Explore products
-              <ArrowRight className="h-4 w-4" aria-hidden="true" />
+              {t("exploreProducts")}
+              <ArrowRight className="h-4 w-4 rtl:-scale-x-100" aria-hidden="true" />
             </Link>
             <Link
               href="/about"
               className="inline-flex min-h-14 items-center justify-center rounded-full border border-white/[0.12] bg-white/[0.06] px-8 py-4 text-sm font-semibold text-slate-100 backdrop-blur transition hover:-translate-y-1 hover:border-cyan-200/30 hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-cyan-200"
             >
-              About Syvursoft
+              {t("aboutSyvursoft")}
             </Link>
           </div>
 
@@ -150,7 +145,7 @@ export default function SyvursoftHero() {
           <div className="relative z-10 flex h-44 w-44 items-center justify-center">
             <Image
               src="/images/syvursoft-logo.png"
-              alt="Syvursoft logo"
+              alt={t("logoAlt")}
               width={260}
               height={144}
               className="h-auto w-full object-contain drop-shadow-[0_0_22px_rgba(34,211,238,0.42)]"
@@ -161,7 +156,7 @@ export default function SyvursoftHero() {
           <div className="absolute h-[420px] w-[420px] rounded-full border border-cyan-300/[0.08]" />
           <div className="absolute h-[520px] w-[520px] rounded-full border border-sky-300/[0.06]" />
 
-          {orbitLabels.map(([name, text, delay], index) => (
+          {orbitLabels.map(([name, id, delay], index) => (
             <div
               key={name}
               className="absolute left-1/2 top-1/2 z-20 h-[420px] w-[420px] -ml-[210px] -mt-[210px] animate-[ecosystem-orbit_36s_linear_infinite]"
@@ -178,7 +173,7 @@ export default function SyvursoftHero() {
                   >
                     <span className="h-2 w-2 rounded-full bg-cyan-300 shadow-[0_0_10px_rgba(34,211,238,0.85)]" />
                     <span className="text-white">{name}</span>
-                    <span className="text-slate-400">{text}</span>
+                    <span className="text-slate-400">{t(`orbit.${id}`)}</span>
                     <span className="sr-only">{index}</span>
                   </div>
                 </div>

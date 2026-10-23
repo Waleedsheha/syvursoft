@@ -1,50 +1,57 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google"; // Using Inter as per existing file
-import "../globals.css"; // Adjusted path for [locale]
-import { NextIntlClientProvider } from 'next-intl';
-import { getMessages } from 'next-intl/server';
-import { notFound } from 'next/navigation';
-
-const locales = ['en', 'ar'] as const;
+import { IBM_Plex_Sans_Arabic, Inter } from "next/font/google";
+import { notFound } from "next/navigation";
+import { hasLocale } from "next-intl";
+import { getMessages, getTimeZone, getTranslations, setRequestLocale } from "next-intl/server";
+import ClientIntlProvider from "@/i18n/client-provider";
+import { directionOf, routing } from "@/i18n/routing";
+import "../globals.css";
 
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
+  adjustFontFallback: false,
 });
 
-export const metadata: Metadata = {
-  title: "Syvursoft - The Next Generation of Medical Software",
-  description: "Advanced medical software solutions including RADex, MEND, BOND, and ADAM AI.",
-};
+/* The Arabic pages are set in IBM Plex Sans Arabic, which also draws the Latin product names. Only the Arabic pages
+   download it, so it is not preloaded on every page. */
+const plexArabic = IBM_Plex_Sans_Arabic({
+  subsets: ["arabic", "latin"],
+  weight: ["300", "400", "500", "600", "700"],
+  variable: "--font-arabic",
+  adjustFontFallback: false,
+  preload: false,
+});
+
+type LocaleParams = { params: Promise<{ locale: string }> };
+
+export function generateStaticParams() {
+  return routing.locales.map((locale) => ({ locale }));
+}
+
+export async function generateMetadata({ params }: LocaleParams): Promise<Metadata> {
+  const { locale } = await params;
+  if (!hasLocale(routing.locales, locale)) notFound();
+  const t = await getTranslations({ locale, namespace: "metadata.root" });
+  return { title: t("title"), description: t("description") };
+}
 
 export default async function LocaleLayout({
   children,
-  params
-}: {
-  children: React.ReactNode;
-  params: Promise<{ locale: string }>;
-}) {
+  params,
+}: Readonly<LocaleParams & { children: React.ReactNode }>) {
   const { locale } = await params;
-
-  // Ensure that the incoming `locale` is valid
-  if (!locales.includes(locale as (typeof locales)[number])) {
-    notFound();
-  }
-
-  // Providing all messages to the client
-  // side is the easiest way to get started
+  if (!hasLocale(routing.locales, locale)) notFound();
+  setRequestLocale(locale);
   const messages = await getMessages();
-
-  const isRtl = locale === 'ar';
+  const timeZone = await getTimeZone();
 
   return (
-    <html lang={locale} dir={isRtl ? 'rtl' : 'ltr'} suppressHydrationWarning>
-      <body
-        className={`${inter.variable} antialiased`}
-      >
-        <NextIntlClientProvider messages={messages}>
+    <html lang={locale} dir={directionOf(locale)} suppressHydrationWarning>
+      <body className={`${inter.variable} ${plexArabic.variable} antialiased`}>
+        <ClientIntlProvider locale={locale} messages={messages} timeZone={timeZone}>
           {children}
-        </NextIntlClientProvider>
+        </ClientIntlProvider>
       </body>
     </html>
   );

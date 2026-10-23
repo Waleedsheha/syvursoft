@@ -1,8 +1,10 @@
 "use client";
 
 import { motion, useScroll, useMotionValueEvent } from "framer-motion";
+import { useLocale } from "next-intl";
 import { LucideIcon } from "lucide-react";
 import { useState, useRef, memo, useEffect } from "react";
+import { directionOf } from "@/i18n/routing";
 
 interface Feature {
     id: string;
@@ -16,6 +18,9 @@ interface Feature {
 interface CardProps {
     feature: Feature;
     index: number;
+    label: string;
+    // 1 when the page reads left to right, -1 when it reads right to left: the visual card sits on the start side.
+    side: number;
 }
 
 const CardVisual = ({ color, image, title }: { color: string, image: string, title: string }) => (
@@ -36,7 +41,7 @@ const CardVisual = ({ color, image, title }: { color: string, image: string, tit
     </div>
 );
 
-const Card = memo(({ feature, index, featuresLength, activeIndex, isScrolling }: CardProps & { featuresLength: number, activeIndex: number, isScrolling: boolean }) => {
+const Card = memo(({ feature, index, label, side, featuresLength, activeIndex, isScrolling }: CardProps & { featuresLength: number, activeIndex: number, isScrolling: boolean }) => {
     const [isActive, setIsActive] = useState(false);
 
     // Auto-dismiss interaction when scrolling starts
@@ -72,13 +77,13 @@ const Card = memo(({ feature, index, featuresLength, activeIndex, isScrolling }:
                     {/* Visual Side Card */}
                     <motion.div
                         className={`w-full md:w-1/2 h-full cursor-pointer ${isScrolling ? "pointer-events-none" : ""}`}
-                        initial={{ x: -250, opacity: 0, rotateY: 45, scale: 0.8 }}
+                        initial={{ x: -250 * side, opacity: 0, rotateY: 45 * side, scale: 0.8 }}
                         animate={isActive ? {
                             scale: 2.2,
                             opacity: 1,
                             rotateY: 0,
                             zIndex: 100,
-                            x: 150, // Move towards center
+                            x: 150 * side, // Move towards center
                         } : {
                             scale: 1.1, // Default visible state
                             opacity: 1,
@@ -111,14 +116,14 @@ const Card = memo(({ feature, index, featuresLength, activeIndex, isScrolling }:
                         />
 
                         <div className="relative h-full w-full rounded-3xl overflow-hidden shadow-2xl border border-white/10 bg-white p-10 flex flex-col justify-center">
-                            <div className="absolute top-6 right-8 text-8xl font-black select-none z-0 overflow-hidden">
+                            <div className="absolute top-6 end-8 text-8xl font-black select-none z-0 overflow-hidden">
                                 <span className="bg-clip-text text-transparent bg-gradient-to-r from-gray-900 via-gray-400 to-gray-900 bg-[length:200%_auto] animate-shimmer opacity-80">
                                     {(index + 1).toString().padStart(2, '0')}
                                 </span>
                             </div>
                             <div className="relative z-10">
                                 <h3 className={`text-base font-bold uppercase tracking-widest mb-3 text-transparent bg-clip-text bg-gradient-to-r ${feature.color}`}>
-                                    RADex Capability
+                                    {label}
                                 </h3>
                                 <h2 className="text-4xl font-bold text-gray-900 mb-6">{feature.title}</h2>
                                 <p className="text-lg text-gray-600 leading-relaxed mb-8">
@@ -138,7 +143,8 @@ const Card = memo(({ feature, index, featuresLength, activeIndex, isScrolling }:
 
 Card.displayName = "Card";
 
-export default function CardStack({ features }: { features: Feature[] }) {
+export default function CardStack({ features, label }: { features: Feature[]; label: string }) {
+    const side = directionOf(useLocale()) === "rtl" ? -1 : 1;
     const [activeIndex, setActiveIndex] = useState(0);
     const [isScrolling, setIsScrolling] = useState(false);
     const scrollTimeout = useRef<NodeJS.Timeout | null>(null);
@@ -168,6 +174,8 @@ export default function CardStack({ features }: { features: Feature[] }) {
                     key={feature.id}
                     feature={feature}
                     index={index}
+                    label={label}
+                    side={side}
                     featuresLength={features.length}
                     activeIndex={activeIndex}
                     isScrolling={isScrolling}

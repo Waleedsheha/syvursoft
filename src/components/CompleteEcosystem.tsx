@@ -1,18 +1,17 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Link from "next/link";
+import { useTranslations } from "next-intl";
 import {
     Zap,
     Building2,
     BrainCircuit
 } from "lucide-react";
+import { Link } from "@/i18n/navigation";
 
 const ecosystemItems = [
     {
         id: "radex",
-        title: "RADex",
-        description: "The complete radiology engine. Unified RIS, PACS, and Viewer for ultimate diagnostic speed and precision.",
         icon: Zap,
         color: "from-orange-500 to-red-600",
         shadow: "shadow-orange-500/20",
@@ -23,8 +22,6 @@ const ecosystemItems = [
     },
     {
         id: "mend",
-        title: "MEND",
-        description: "An adaptive medical-facility operating system that simulates the real facility and controls workflows from every corner.",
         icon: Building2,
         color: "from-cyan-400 to-blue-600",
         shadow: "shadow-cyan-500/20",
@@ -35,19 +32,19 @@ const ecosystemItems = [
     },
     {
         id: "adam",
-        title: "ADAM",
-        description: "The central intelligence brain that orchestrates and optimizes the entire ecosystem.",
         icon: BrainCircuit,
         color: "from-amber-400 to-yellow-600",
         shadow: "shadow-amber-500/20",
         bg: "bg-amber-50",
         border: "border-amber-200",
         text: "text-amber-900",
-        href: "/#products"
+        href: { pathname: "/", hash: "products" }
     }
 ];
 
 export default function CompleteEcosystem() {
+    const t = useTranslations("radex.ecosystem");
+
     return (
         <section className="py-32 bg-slate-50 relative overflow-hidden">
             {/* Background decoration */}
@@ -64,7 +61,7 @@ export default function CompleteEcosystem() {
                         viewport={{ once: true }}
                         className="text-sm font-bold tracking-[0.2em] text-gray-500 uppercase mb-4"
                     >
-                        The Complete Ecosystem
+                        {t("eyebrow")}
                     </motion.h2>
                     <motion.h3
                         initial={{ opacity: 0, y: 20 }}
@@ -73,7 +70,9 @@ export default function CompleteEcosystem() {
                         transition={{ delay: 0.1 }}
                         className="text-5xl md:text-6xl font-black text-gray-900 tracking-tight mb-6"
                     >
-                        Three Pillars of <span className="text-transparent bg-clip-text bg-gradient-to-r from-gray-900 to-gray-600">Power</span>
+                        {t.rich("title", {
+                            accent: (chunks) => <span className="text-transparent bg-clip-text bg-gradient-to-r from-gray-900 to-gray-600">{chunks}</span>
+                        })}
                     </motion.h3>
                 </div>
 
@@ -94,11 +93,11 @@ export default function CompleteEcosystem() {
 
                                 <div className="relative z-10 flex flex-col h-full items-center text-center">
                                     <h4 className="text-5xl font-black tracking-tight text-gray-900 mb-8 pt-8 group-hover:scale-110 transition-transform duration-300">
-                                        {item.title}
+                                        {t(`items.${item.id}.title`)}
                                     </h4>
 
                                     <p className="text-gray-600 leading-relaxed mb-8 flex-grow">
-                                        {item.description}
+                                        {t(`items.${item.id}.description`)}
                                     </p>
 
 

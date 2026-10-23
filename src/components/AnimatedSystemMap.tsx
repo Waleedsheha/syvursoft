@@ -2,6 +2,7 @@
 
 import { useEffect, useId, useRef } from "react";
 import { animate, stagger, svg } from "animejs";
+import { useFormatter, useTranslations } from "next-intl";
 import { products, type ProductId } from "@/lib/products";
 
 const mapProducts = ["radex", "mend", "adam"] satisfies ProductId[];
@@ -10,7 +11,6 @@ const nodes = [
   {
     id: "syvursoft",
     name: "Syvursoft",
-    role: "Clinical software ecosystem",
     x: 320,
     y: 210,
     width: 190,
@@ -20,7 +20,6 @@ const nodes = [
   {
     id: "radex",
     name: "RADex",
-    role: "Radiology engine",
     x: 128,
     y: 114,
     width: 154,
@@ -30,7 +29,6 @@ const nodes = [
   {
     id: "mend",
     name: "MEND",
-    role: "Facility operations",
     x: 512,
     y: 114,
     width: 154,
@@ -40,7 +38,6 @@ const nodes = [
   {
     id: "adam",
     name: "ADAM",
-    role: "Clinical intelligence",
     x: 320,
     y: 342,
     width: 154,
@@ -49,10 +46,15 @@ const nodes = [
   },
 ] as const;
 
-const productNames = mapProducts
-  .map((productId) => products.find(({ id }) => id === productId)?.name)
-  .filter(Boolean)
-  .join(", ");
+const productNames = mapProducts.map((productId) => {
+  const product = products.find(({ id }) => id === productId);
+
+  if (!product) {
+    throw new Error(`Missing system map product metadata for ${productId}`);
+  }
+
+  return product.name;
+});
 
 const drawableAttributeNames = [
   "pathLength",
@@ -65,9 +67,11 @@ type DrawableAttributeName = (typeof drawableAttributeNames)[number];
 function NodeLabel({
   filterId,
   node,
+  role,
 }: {
   filterId: string;
   node: (typeof nodes)[number];
+  role: string;
 }) {
   const left = node.x - node.width / 2;
   const top = node.y - node.height / 2;
@@ -100,13 +104,15 @@ function NodeLabel({
         textAnchor="middle"
         className="system-map-node-role"
       >
-        {node.role}
+        {role}
       </text>
     </g>
   );
 }
 
 export default function AnimatedSystemMap() {
+  const t = useTranslations("home.systemMap");
+  const format = useFormatter();
   const reactId = useId().replace(/:/g, "");
   const headingId = `${reactId}-system-map-title`;
   const svgTitleId = `${reactId}-system-map-svg-title`;
@@ -230,17 +236,16 @@ export default function AnimatedSystemMap() {
         <div className="grid gap-10 lg:grid-cols-[0.86fr_1.14fr] lg:items-center">
           <div>
             <p className="text-sm font-bold uppercase tracking-[0.24em] text-cyan-300">
-              System map
+              {t("label")}
             </p>
             <h2
               id={headingId}
               className="mt-4 max-w-xl text-4xl font-bold leading-[0.98] tracking-[-0.045em] text-white sm:text-5xl"
             >
-              Syvursoft coordinates specialized healthcare systems.
+              {t("heading")}
             </h2>
             <p className="mt-6 max-w-xl text-base leading-7 text-slate-300">
-              RADex, MEND, and ADAM connect through one product direction for
-              clinical operations, imaging workflows, and intelligence.
+              {t("description")}
             </p>
           </div>
 
@@ -252,7 +257,12 @@ export default function AnimatedSystemMap() {
               className="h-auto w-full"
             >
               <title id={svgTitleId}>
-                {`Syvursoft connected to ${productNames}`}
+                {t("svgTitle", {
+                  products: format.list(productNames, {
+                    type: "conjunction",
+                    style: "narrow",
+                  }),
+                })}
               </title>
               <defs>
                 <linearGradient
@@ -306,6 +316,7 @@ export default function AnimatedSystemMap() {
                   key={node.id}
                   filterId={shadowFilterId}
                   node={node}
+                  role={t(`nodes.${node.tone}`)}
                 />
               ))}
             </svg>

@@ -1,18 +1,13 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import Link from "next/link";
 import { animate, stagger } from "animejs";
 import { ArrowUpRight } from "lucide-react";
+import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
 import { products, type ProductId, type ProductInfo } from "@/lib/products";
 
 const homepageProductIds = ["radex", "mend", "adam"] satisfies ProductId[];
-
-const productProof: Record<ProductId, string[]> = {
-  radex: ["RIS", "PACS", "DICOM", "Reports"],
-  mend: ["Digital twin", "Teams", "Maintenance", "Audit"],
-  adam: ["AI orchestration", "Insight", "Automation", "Support"],
-};
 
 const productCardStyles: Record<
   ProductId,
@@ -43,6 +38,8 @@ const homepageProducts = homepageProductIds.map((productId) => {
 }) satisfies ProductInfo[];
 
 export default function ProductEcosystem() {
+  const t = useTranslations("home.productEcosystem");
+  const tProducts = useTranslations("products");
   const sectionRef = useRef<HTMLElement | null>(null);
 
   useEffect(() => {
@@ -110,21 +107,21 @@ export default function ProductEcosystem() {
         <div className="relative grid gap-6 border-y border-slate-200/80 py-8 md:grid-cols-[minmax(0,0.72fr)_minmax(320px,0.28fr)] md:items-end">
           <div>
             <p className="text-sm font-bold uppercase tracking-[0.24em] text-sky-700">
-              Product ecosystem
+              {t("label")}
             </p>
             <h2 className="mt-4 max-w-3xl text-4xl font-bold leading-[0.98] tracking-[-0.045em] text-slate-950 sm:text-5xl">
-              Three active products, one connected clinical software suite.
+              {t("heading")}
             </h2>
           </div>
           <p className="text-base leading-7 text-slate-600">
-            Move from radiology workflow to whole-facility control and
-            intelligence without losing operational context between teams.
+            {t("description")}
           </p>
         </div>
 
         <div className="mt-12 grid gap-6 lg:grid-cols-3">
           {homepageProducts.map(
-            ({ id, name, shortRole, description, href, status }) => {
+            ({ id, name, href, status }) => {
+              const proof: string[] = t.raw(`proof.${id}`);
               const style = productCardStyles[id];
               const cardContent = (
                 <>
@@ -136,7 +133,7 @@ export default function ProductEcosystem() {
                     <div className="relative flex items-start justify-between gap-5">
                       <div>
                         <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">
-                          {shortRole}
+                          {tProducts(`${id}.shortRole`)}
                         </p>
                         <h3 className="mt-3 text-4xl font-bold tracking-[-0.04em] text-slate-950">
                           {name}
@@ -151,10 +148,10 @@ export default function ProductEcosystem() {
                   <div className="flex flex-1 flex-col justify-between p-6">
                     <div>
                       <p className="text-base leading-7 text-slate-600">
-                        {description}
+                        {tProducts(`${id}.description`)}
                       </p>
                       <div className="mt-6 grid grid-cols-2 gap-2">
-                        {productProof[id].map((item) => (
+                        {proof.map((item) => (
                           <div
                             key={item}
                             className="flex min-h-10 items-center gap-2 rounded-xl border border-slate-200 bg-slate-50/80 px-3 py-2 text-xs font-semibold text-slate-700 transition group-hover:border-sky-100 group-hover:bg-sky-50/60"
@@ -168,12 +165,12 @@ export default function ProductEcosystem() {
                     <div className="mt-8 flex items-center justify-between border-t border-slate-100 pt-5 text-sm font-semibold text-slate-950">
                       <span>
                         {status === "under-development"
-                          ? "Under development"
-                          : `Open ${name}`}
+                          ? t("underDevelopment")
+                          : t("openProduct", { name })}
                       </span>
                       {status !== "under-development" && (
                         <ArrowUpRight
-                          className="h-5 w-5 text-sky-600 transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                          className="h-5 w-5 text-sky-600 transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5 rtl:-scale-x-100 rtl:group-hover:-translate-x-0.5"
                           aria-hidden="true"
                         />
                       )}
@@ -187,7 +184,7 @@ export default function ProductEcosystem() {
                   <article
                     key={id}
                     data-product-card
-                    aria-label={`${name} is under development`}
+                    aria-label={t("underDevelopmentAria", { name })}
                     className="group relative flex min-h-[390px] flex-col overflow-hidden rounded-[1.5rem] border border-slate-200/80 bg-white/90 opacity-100 shadow-[0_24px_80px_rgba(96,165,250,0.10)] backdrop-blur transition duration-500"
                   >
                     {cardContent}

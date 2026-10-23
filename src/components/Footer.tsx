@@ -1,6 +1,9 @@
-import Link from "next/link";
+import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
 
 export default function Footer() {
+  const t = useTranslations("footer");
+
   return (
     <footer className="border-t border-white/[0.06] bg-[#070c17] px-4 py-10 text-white sm:px-6 lg:px-8">
       <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-6 sm:flex-row">
@@ -13,18 +16,18 @@ export default function Footer() {
 
         <nav className="flex flex-wrap justify-center gap-8 text-sm font-semibold text-slate-400">
           <Link href="/about" className="transition-colors duration-200 hover:text-cyan-300">
-            About Us
+            {t("aboutUs")}
           </Link>
           <Link href="/privacy" className="transition-colors duration-200 hover:text-cyan-300">
-            Privacy Policy
+            {t("privacyPolicy")}
           </Link>
           <Link href="/terms" className="transition-colors duration-200 hover:text-cyan-300">
-            Terms of Service
+            {t("termsOfService")}
           </Link>
         </nav>
 
         <p className="text-xs text-slate-500">
-          &copy; {new Date().getFullYear()} Syvursoft. All rights reserved.
+          {t("copyright", { year: new Date().getFullYear() })}
         </p>
       </div>
     </footer>

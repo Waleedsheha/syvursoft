@@ -1,25 +1,39 @@
 "use client";
 
+import type { ComponentProps } from "react";
 import { motion, AnimatePresence, Variants } from "framer-motion";
-import Link from "next/link";
+import NextLink from "next/link";
+import { useLocale, useTranslations } from "next-intl";
 import { ArrowRight, ChevronDown } from "lucide-react";
 import { useState } from "react";
+import { Link } from "@/i18n/navigation";
+import { directionOf } from "@/i18n/routing";
 
 export interface NavLink {
     name: string;
-    href: string;
+    href: ComponentProps<typeof Link>["href"];
     action?: () => void;
     external?: boolean;
     submenu?: NavLink[];
+}
+
+export interface LocaleSwitch {
+    locale: string;
+    href: string;
+    label: string;
 }
 
 interface StaggeredMenuProps {
     open: boolean;
     setOpen: (open: boolean) => void;
     links: NavLink[];
+    localeSwitch: LocaleSwitch;
 }
 
-export default function StaggeredMenu({ open, setOpen, links }: StaggeredMenuProps) {
+export default function StaggeredMenu({ open, setOpen, links, localeSwitch }: StaggeredMenuProps) {
+    const t = useTranslations("header");
+    // The menu slides in from the end side: the right in English, the left in Arabic.
+    const side = directionOf(useLocale()) === "rtl" ? -1 : 1;
     const [expandedMenu, setExpandedMenu] = useState<string | null>(null);
 
     const toggleSubmenu = (name: string) => {
@@ -29,7 +43,7 @@ export default function StaggeredMenu({ open, setOpen, links }: StaggeredMenuPro
     // Variants for the sidebar container
     const sidebarVariants: Variants = {
         closed: {
-            x: "100%",
+            x: `${side * 100}%`,
             transition: {
                 type: "spring",
                 stiffness: 400,
@@ -53,7 +67,7 @@ export default function StaggeredMenu({ open, setOpen, links }: StaggeredMenuPro
     // Variants for individual list items
     const itemVariants = {
         closed: {
-            x: 50,
+            x: side * 50,
             opacity: 0,
             transition: {
                 y: { stiffness: 1000 }
@@ -83,7 +97,7 @@ export default function StaggeredMenu({ open, setOpen, links }: StaggeredMenuPro
 
                     {/* Sidebar */}
                     <motion.div
-                        className="fixed right-0 top-0 z-[100] flex h-screen w-full flex-col justify-between overflow-y-auto border-l border-white/10 bg-[#070c17] p-8 shadow-2xl md:w-[450px]"
+                        className="fixed end-0 top-0 z-[100] flex h-screen w-full flex-col justify-between overflow-y-auto border-s border-white/10 bg-[#070c17] p-8 shadow-2xl md:w-[450px]"
                         initial="closed"
                         animate="open"
                         exit="closed"
@@ -104,7 +118,7 @@ export default function StaggeredMenu({ open, setOpen, links }: StaggeredMenuPro
                                         <div className="flex flex-col">
                                             <button
                                                 onClick={() => toggleSubmenu(link.name)}
-                                                className="group flex w-full items-center justify-between text-left text-4xl font-bold tracking-[-0.04em] text-white transition-colors hover:text-cyan-200"
+                                                className="group flex w-full items-center justify-between text-start text-4xl font-bold tracking-[-0.04em] text-white transition-colors hover:text-cyan-200"
                                             >
                                                 <div className="flex items-center gap-4">
                                                     <span className="text-sm font-light text-slate-500 transition-colors group-hover:text-cyan-300/70">
@@ -134,7 +148,7 @@ export default function StaggeredMenu({ open, setOpen, links }: StaggeredMenuPro
                                                                             subItem.action?.();
                                                                             setOpen(false);
                                                                         }}
-                                                                        className="flex w-full items-center gap-3 rounded-xl px-4 py-2 text-left text-xl text-slate-300 transition-all hover:bg-white/[0.06] hover:text-cyan-200"
+                                                                        className="flex w-full items-center gap-3 rounded-xl px-4 py-2 text-start text-xl text-slate-300 transition-all hover:bg-white/[0.06] hover:text-cyan-200"
                                                                     >
                                                                         <div className="h-1.5 w-1.5 rounded-full bg-cyan-300" />
                                                                         {subItem.name}
@@ -186,14 +200,23 @@ export default function StaggeredMenu({ open, setOpen, links }: StaggeredMenuPro
                         >
                             <div className="h-px w-full bg-white/10" />
 
-                            <div className="flex justify-end items-center">
+                            <div className="flex justify-between items-center">
+                                <NextLink
+                                    href={localeSwitch.href}
+                                    lang={localeSwitch.locale}
+                                    hrefLang={localeSwitch.locale}
+                                    onClick={() => setOpen(false)}
+                                    className="text-sm font-medium text-slate-400 hover:text-cyan-200"
+                                >
+                                    {localeSwitch.label}
+                                </NextLink>
                                 <motion.button
                                     onClick={() => setOpen(false)}
                                     whileHover={{ scale: 1.05 }}
                                     whileTap={{ scale: 0.95 }}
                                     className="flex items-center gap-2 text-sm font-medium text-slate-400 hover:text-cyan-200"
                                 >
-                                    Close <ArrowRight size={16} />
+                                    {t("closeMenu")} <ArrowRight size={16} className="rtl:-scale-x-100" />
                                 </motion.button>
                             </div>
                         </motion.div>
@@ -203,4 +226,3 @@ export default function StaggeredMenu({ open, setOpen, links }: StaggeredMenuPro
         </AnimatePresence>
     );
 }
-
