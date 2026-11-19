@@ -22,7 +22,8 @@
     "aboutUs": "من نحن",
     "privacyPolicy": "سياسة الخصوصية",
     "termsOfService": "شروط الخدمة",
-    "copyright": "© {year} Syvursoft. جميع الحقوق محفوظة."
+    "copyright": "© {year} Syvursoft. جميع الحقوق محفوظة.",
+    "address": "5 شارع صلاح الملاح، ثان المحلة الكبرى، الغربية، مصر"
   },
   "welcomeGate": {
     "welcome": "مرحبًا بكم",

@@ -30,6 +30,10 @@ export default function Footer() {
           {t("copyright", { year: new Date().getFullYear() })}
         </p>
       </div>
+
+      <address className="mx-auto mt-6 max-w-7xl text-center text-xs not-italic text-slate-500">
+        {t("address")}
+      </address>
     </footer>
   );
 }
