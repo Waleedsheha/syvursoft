@@ -34,6 +34,10 @@ export default function Footer() {
       <address className="mx-auto mt-6 max-w-7xl text-center text-xs not-italic text-slate-500">
         {t("address")}
       </address>
+
+      <p className="mx-auto mt-2 max-w-7xl text-center text-xs text-slate-500">
+        {t("taxRegistration")}
+      </p>
     </footer>
   );
 }

@@ -23,7 +23,8 @@
     "privacyPolicy": "Privacy Policy",
     "termsOfService": "Terms of Service",
     "copyright": "© {year} Syvursoft. All rights reserved.",
-    "address": "5 Salah El-Mallah St., El-Mahalla El-Kubra 2nd District, Gharbia, Egypt"
+    "address": "5 Salah El-Mallah St., El-Mahalla El-Kubra 2nd District, Gharbia, Egypt",
+    "taxRegistration": "Tax Registration No.: 782-102-808"
   },
   "welcomeGate": {
     "welcome": "Welcome",
